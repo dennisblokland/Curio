@@ -20,6 +20,7 @@
 /*.ipr
 /*.iws
 /*.iml
+/classes
 
 ## Private Stuffs
 /private.properties
