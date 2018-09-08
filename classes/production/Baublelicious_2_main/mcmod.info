@@ -1,0 +1,16 @@
+[
+{
+  "modid": "baublelicious2",
+  "name": "Baublelicious2",
+  "description": "Expansion for Baubles",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["DenBukki"],
+  "credits": "Azanor for making baubles",
+  "logoFile": "BLLogo.png",
+  "screenshots": [],
+  "dependencies": [baubles]
+}
+]
