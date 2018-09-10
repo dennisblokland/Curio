@@ -5,8 +5,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemRing  extends  BaublesItemBase{
     public ItemRing() {
-        this.setUnlocalizedName("ItemRing");
-        setRegistryName("ItemRing");
+        super("ItemRing");
     }
 
     @Override

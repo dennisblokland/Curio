@@ -5,9 +5,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemAmulet extends BaublesItemBase {
     public ItemAmulet() {
-        setUnlocalizedName("ItemAmulet");
-        setRegistryName("ItemAmulet");
-
+        super("ItemAmulet");
     }
 
     @Override

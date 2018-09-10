@@ -1,16 +1,21 @@
 package com.denbukki.baublelicious2.items;
 
 import com.denbukki.baublelicious2.Baublelicious2;
+import com.denbukki.baublelicious2.ModInfo;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
-public abstract class ItemBase extends Item {
+public class ItemBase extends Item {
 
     protected String name;
 
-    public ItemBase() {
+    public ItemBase(String name) {
         super();
+        this.name = name;
         setCreativeTab(Baublelicious2.Baublelicious2Tab);
+        setUnlocalizedName(ModInfo.MOD_ID +"."+this.name);
+        setRegistryName(new ResourceLocation(ModInfo.MOD_ID, this.name));
     }
     @Override
     public String getUnlocalizedName(ItemStack par1ItemStack)
@@ -18,7 +23,7 @@ public abstract class ItemBase extends Item {
         return super.getUnlocalizedName();
     }
 
-    public void registerItemModel(Item item) {
-        Baublelicious2.proxy.registerItemRenderer(item, 0, name);
+    public void registerItemModel() {
+        Baublelicious2.proxy.registerItemRenderer(this, 0, name);
     }
 }
