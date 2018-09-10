@@ -2,9 +2,6 @@ language: java
 jdk:
   - oraclejdk8
   - openjdk8
-addons:
-  sonarcloud:
-    organization: "dennisblokland-github" 
     
 before_install:
  - chmod +x gradlew
@@ -13,4 +10,3 @@ install:
  - ./gradlew setupCIWorkspace -S
 script:
  - ./gradlew build -S
- - sonar-scanner
