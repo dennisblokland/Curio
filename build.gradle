@@ -102,7 +102,9 @@ task incrementBuildNumber(dependsOn: 'reobfJar') << {
         config.toProperties().store(it, "")
     }
 }
-
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+}
 def parseConfig(File config) {
     config.withReader {
         def prop = new Properties()
