@@ -1,1 +1,1 @@
-Baublelicious 2
+Baublelicious 2 [![Sonar](https://sonarcloud.io/api/project_badges/measure?project=dennisblokland_Baublelicious2&metric=alert_status)](https://sonarcloud.io/dashboard?id=dennisblokland_Baublelicious2)
