@@ -12,24 +12,38 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class BlockCrystal extends BlockBase implements ITileEntityProvider {
+public class BlockCrystal extends BlockBase {
 
     private Item breakItem;
+    private ArrayList<BiomeDictionary.Type> biomes;
 
+    public BlockCrystal(String name, Item breakItem , ArrayList<BiomeDictionary.Type> biomes) {
+        super(Material.GLASS, name);
+        this.breakItem = breakItem;
+        this.biomes = biomes;
+    }
     public BlockCrystal(String name, Item breakItem) {
         super(Material.GLASS, name);
         this.breakItem = breakItem;
+        this.biomes = new  ArrayList<BiomeDictionary.Type>();
     }
 
     /**
      * Get the Item that this Block should drop when harvested.
      */
+
+    public ArrayList<BiomeDictionary.Type> getBiomes(){
+        return biomes;
+    }
+
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
@@ -40,12 +54,6 @@ public class BlockCrystal extends BlockBase implements ITileEntityProvider {
     public int quantityDropped(Random random)
     {
         return random.nextInt(1) + 1;
-    }
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        // Bind our TESR to our tile entity
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrystal.class, new TileEntityCrystalRenderer());
-
     }
 
     @Override
@@ -60,19 +68,13 @@ public class BlockCrystal extends BlockBase implements ITileEntityProvider {
     }
 
     @Override
-    public boolean isOpaqueCube(IBlockState blockState) {
+    public boolean isFullCube(IBlockState blockState) {
         return false;
     }
+
     @Override
-    public boolean hasTileEntity(IBlockState state) {
-        return true;
-    }
-    public TileEntityCrystal getTileEntity(IBlockAccess world, BlockPos pos) {
-        return (TileEntityCrystal)world.getTileEntity(pos);
-    }
-    @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityCrystal();
+    public boolean isOpaqueCube(IBlockState blockState) {
+        return false;
     }
     @SideOnly(Side.CLIENT)
     @Override

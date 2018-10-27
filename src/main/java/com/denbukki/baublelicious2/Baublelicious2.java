@@ -4,6 +4,7 @@ package com.denbukki.baublelicious2;
 import com.denbukki.baublelicious2.blocks.Baublelicious2Blocks;
 import com.denbukki.baublelicious2.items.Baublelicious2Items;
 import com.denbukki.baublelicious2.world.Baublelicious2WorldGeneration;
+import com.denbukki.baublelicious2.world.WorldgenCrystal;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -27,6 +28,7 @@ public class Baublelicious2 {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         GameRegistry.registerWorldGenerator(new Baublelicious2WorldGeneration(), 3);
+        GameRegistry.registerWorldGenerator(new WorldgenCrystal(), 3);
         proxy.preInit(event);
     }
 

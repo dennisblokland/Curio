@@ -19,7 +19,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
-        Baublelicious2Blocks.initModels();
         OBJLoader.INSTANCE.addDomain(ModInfo.MOD_ID);
 
     }

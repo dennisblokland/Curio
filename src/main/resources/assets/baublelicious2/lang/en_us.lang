@@ -10,5 +10,8 @@ item.baublelicious2.ItemMystic_Crystal.name=Mystic Crystal
 
 #BLOCKS
 tile.baublelicious2.Mystic_Ore.name=Mystic Ore
-tile.baublelicious2.firecrystal.name=Fire Crystal
+tile.baublelicious2.FireCrystal.name=Fire Crystal
+tile.baublelicious2.WaterCrystal.name=Water Crystal
+tile.baublelicious2.EarthCrystal.name=Earth Crystal
+tile.baublelicious2.AirCrystal.name=Air Crystal
 
