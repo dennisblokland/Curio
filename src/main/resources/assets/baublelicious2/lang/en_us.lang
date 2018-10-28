@@ -6,6 +6,10 @@ item.baublelicious2.ItemBelt.name=Belt
 item.baublelicious2.ItemAmulet.name=Amulet
 
 item.baublelicious2.ItemMystic_Crystal.name=Mystic Crystal
+item.baublelicious2.ItemAirShard.name=Air Crystal Shard
+item.baublelicious2.ItemWaterShard.name=Water Crystal Shard
+item.baublelicious2.ItemEarthShard.name=Earth Crystal Shard
+item.baublelicious2.ItemFireShard.name=Fire Crystal Shard
 
 
 #BLOCKS

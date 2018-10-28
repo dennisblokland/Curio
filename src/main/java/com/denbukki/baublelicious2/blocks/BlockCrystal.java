@@ -29,16 +29,17 @@ public class BlockCrystal extends BlockBase {
         super(Material.GLASS, name);
         this.breakItem = breakItem;
         this.biomes = biomes;
+        this.setHardness(2.0F);
+        this.setResistance(3.0F);
+        this.setHarvestLevel("pickaxe", 1);
+
+
+
     }
     public BlockCrystal(String name, Item breakItem) {
-        super(Material.GLASS, name);
-        this.breakItem = breakItem;
-        this.biomes = new  ArrayList<BiomeDictionary.Type>();
-    }
+        this(name, breakItem, new ArrayList<BiomeDictionary.Type>());
 
-    /**
-     * Get the Item that this Block should drop when harvested.
-     */
+    }
 
     public ArrayList<BiomeDictionary.Type> getBiomes(){
         return biomes;
@@ -50,6 +51,7 @@ public class BlockCrystal extends BlockBase {
         return breakItem;
 
     }
+
     @Override
     public int quantityDropped(Random random)
     {
@@ -80,6 +82,11 @@ public class BlockCrystal extends BlockBase {
     @Override
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.TRANSLUCENT;
+    }
+    @Override
+    protected boolean canSilkHarvest()
+    {
+        return true;
     }
 
 }
