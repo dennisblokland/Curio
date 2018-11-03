@@ -2,22 +2,18 @@ package com.denbukki.baublelicious2.blocks;
 
 
 import com.denbukki.baublelicious2.items.Baublelicious2Items;
-import com.denbukki.baublelicious2.tiles.TileEntityCrystal;
 import net.minecraft.block.Block;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Baublelicious2Blocks {
 
     public static final BlockMysticOre blockMysticOre = new BlockMysticOre();
+
+    public static final BlockInfusionTable blockInfusionTable = new BlockInfusionTable();
 
     public static final BlockCrystal blockFireCrystal = new BlockCrystal("FireCrystal", Baublelicious2Items.itemFireShard);
 
@@ -43,8 +39,10 @@ public class Baublelicious2Blocks {
                 blockFireCrystal,
                 blockEarthCrystal,
                 blockWaterCrystal,
-                blockAirCrystal
+                blockAirCrystal,
+                blockInfusionTable
         );
+
     }
 
     public static void registerItemBlocks(IForgeRegistry<Item> registry) {
@@ -53,7 +51,8 @@ public class Baublelicious2Blocks {
                 blockFireCrystal.createItemBlock(),
                 blockEarthCrystal.createItemBlock(),
                 blockWaterCrystal.createItemBlock(),
-                blockAirCrystal.createItemBlock()
+                blockAirCrystal.createItemBlock(),
+                blockInfusionTable.createItemBlock()
         );
     }
 
@@ -63,5 +62,6 @@ public class Baublelicious2Blocks {
         blockEarthCrystal.registerItemModel(Item.getItemFromBlock(blockEarthCrystal));
         blockWaterCrystal.registerItemModel(Item.getItemFromBlock(blockWaterCrystal));
         blockAirCrystal.registerItemModel(Item.getItemFromBlock(blockAirCrystal));
+        blockInfusionTable.registerItemModel(Item.getItemFromBlock(blockInfusionTable));
     }
 }
