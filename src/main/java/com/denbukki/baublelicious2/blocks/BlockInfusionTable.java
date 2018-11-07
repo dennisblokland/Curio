@@ -1,39 +1,22 @@
 package com.denbukki.baublelicious2.blocks;
 
-import com.denbukki.baublelicious2.client.fx.ParticleXPOrb;
-import com.denbukki.baublelicious2.items.Baublelicious2Items;
 import com.denbukki.baublelicious2.items.ItemMysticCrystal;
 import com.denbukki.baublelicious2.tiles.TileInfusionTable;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityEnchantmentTable;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.property.ExtendedBlockState;
-import net.minecraftforge.common.property.IUnlistedProperty;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.common.property.IUnlistedProperty;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class BlockInfusionTable extends BlockBaseContrainer {
     private boolean isWorking;
@@ -67,18 +50,19 @@ public class BlockInfusionTable extends BlockBaseContrainer {
             ItemStack heldItem = player.getHeldItem(hand);
             TileInfusionTable tile = (TileInfusionTable) world.getTileEntity(pos);
             IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side);
-            ItemStack stack = itemHandler.getStackInSlot(0);
             if (heldItem.getItem() instanceof ItemMysticCrystal && heldItem.getItemDamage() == 0) {
                 if (!player.isSneaking()) {
                     if (tile.inventory.getStackInSlot(0).isEmpty()) {
                         itemHandler.insertItem(0, new ItemStack(heldItem.getItem(), 1, 0), false);
-                        tile.InfuseItem(player);
+                        tile.infuseItem(player);
                         heldItem.setCount(heldItem.getCount() - 1);
                         tile.markDirty();
                     }
                 }
             } else if (player.isSneaking()) {
-                player.setHeldItem(hand, itemHandler.extractItem(0, 64, false));
+                if(!tile.isWorking()){
+                    player.setHeldItem(hand, itemHandler.extractItem(0, 64, false));
+                }
             }
         }
 

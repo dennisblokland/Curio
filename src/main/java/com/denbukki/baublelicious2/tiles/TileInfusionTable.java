@@ -86,7 +86,7 @@ public class TileInfusionTable extends TileEntity implements ITickable {
         return new AxisAlignedBB(getPos(), getPos().add(1, 2, 1));
     }
 
-    public void InfuseItem(EntityPlayer player) {
+    public void infuseItem(EntityPlayer player) {
 
         if (player.experienceLevel < 5) {
             return;
@@ -202,5 +202,4 @@ public class TileInfusionTable extends TileEntity implements ITickable {
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
         return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) inventory : super.getCapability(capability, facing);
     }
-
 }
