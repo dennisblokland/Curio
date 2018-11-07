@@ -3,6 +3,7 @@ package com.denbukki.baublelicious2;
 
 import com.denbukki.baublelicious2.blocks.Baublelicious2Blocks;
 import com.denbukki.baublelicious2.items.Baublelicious2Items;
+import com.denbukki.baublelicious2.network.PacketRequestUpdateInfusionTable;
 import com.denbukki.baublelicious2.network.PacketUpdateInfusionTable;
 import com.denbukki.baublelicious2.tiles.TileInfusionTable;
 import com.denbukki.baublelicious2.world.Baublelicious2WorldGeneration;
@@ -37,6 +38,7 @@ public class Baublelicious2 {
     public void preInit(FMLPreInitializationEvent event) {
         network = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MOD_ID);
         network.registerMessage(new PacketUpdateInfusionTable.Handler(), PacketUpdateInfusionTable.class, 0,Side.CLIENT);
+        network.registerMessage(new PacketRequestUpdateInfusionTable.Handler(), PacketRequestUpdateInfusionTable.class, 1, Side.SERVER);
         GameRegistry.registerWorldGenerator(new Baublelicious2WorldGeneration(), 3);
         GameRegistry.registerWorldGenerator(new WorldgenCrystal(), 3);
         proxy.preInit(event);

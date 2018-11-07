@@ -22,12 +22,13 @@ public class PacketUpdateInfusionTable implements IMessage {
     public PacketUpdateInfusionTable(TileInfusionTable te) {
         this(te.getPos(), te.inventory.getStackInSlot(0), te.lastChangeTime);
     }
-    public PacketUpdateInfusionTable() {
 
-    }
     private BlockPos pos;
     private ItemStack stack;
     private long lastChangeTime;
+    public PacketUpdateInfusionTable(){
+
+    }
 
     @Override
     public void toBytes(ByteBuf buf) {

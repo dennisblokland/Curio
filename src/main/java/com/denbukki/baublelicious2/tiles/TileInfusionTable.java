@@ -5,6 +5,7 @@ import com.denbukki.baublelicious2.blocks.BlockInfusionTable;
 import com.denbukki.baublelicious2.client.fx.ParticleXPOrb;
 import com.denbukki.baublelicious2.items.Baublelicious2Items;
 import com.denbukki.baublelicious2.items.ItemMysticCrystal;
+import com.denbukki.baublelicious2.network.PacketRequestUpdateInfusionTable;
 import com.denbukki.baublelicious2.network.PacketUpdateInfusionTable;
 import com.sun.org.apache.bcel.internal.generic.FALOAD;
 import net.minecraft.block.BlockFurnace;
@@ -183,7 +184,7 @@ public class TileInfusionTable extends TileEntity implements ITickable {
     @Override
     public void onLoad() {
         if (world.isRemote) {
-            Baublelicious2.network.sendToServer(new PacketUpdateInfusionTable(this));
+            Baublelicious2.network.sendToServer(new PacketRequestUpdateInfusionTable(this));
         }
     }
 
