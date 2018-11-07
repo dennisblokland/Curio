@@ -1,7 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "baublelicious2:infusion_table" },
-        "active=false": { "model": "baublelicious2:infusion_table" },
-        "active=true": { "model": "baublelicious2:infusion_table" }
+        "normal": { "model": "baublelicious2:infusion_table" }
     }
 }

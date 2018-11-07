@@ -8,6 +8,7 @@ import com.denbukki.baublelicious2.tiles.TileInfusionTable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,9 +38,14 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public void OrbFX(double x, double y, double z, double mX, double mY, double mZ, int age){
-        ParticleXPOrb particle = new ParticleXPOrb(Minecraft.getMinecraft().world,  x, y,  z, mX, mY, mZ);
+    public void OrbFX(double x, double y, double z, double mX, double mY, double mZ, int age, boolean orbit) {
+        ParticleXPOrb particle = new ParticleXPOrb(Minecraft.getMinecraft().world, x, y, z, mX, mY, mZ, orbit);
         particle.setMaxAge(age);
         Minecraft.getMinecraft().effectRenderer.addEffect(particle);
+    }
+
+    @Override
+    public void spawnParticle(EnumParticleTypes type, double x, double y, double z, double v, double v1, double v2) {
+        Minecraft.getMinecraft().world.spawnParticle(type, z, y, z, v, v1, v2);
     }
 }

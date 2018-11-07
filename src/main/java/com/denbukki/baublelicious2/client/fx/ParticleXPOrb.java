@@ -18,14 +18,21 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Random;
 
 
-public class ParticleXPOrb  extends ParticleBase {
+public class ParticleXPOrb extends ParticleBase {
 
-
+    private double destX;
+    private double destY;
+    private double destZ;
+    private boolean orbit;
     private final float scale;
 
-    public ParticleXPOrb(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+    public ParticleXPOrb(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, boolean orbit) {
         super(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
         this.setParticleTexture(TextureStichHandler.orb);
+        this.orbit = orbit;
+        destX = xCoord;
+        destZ = zCoord;
+        destY = yCoord;
         this.motionX = xSpeed;
         this.motionY = ySpeed;
         this.motionZ = zSpeed;
@@ -36,8 +43,8 @@ public class ParticleXPOrb  extends ParticleBase {
         this.particleScale *= 0.50F;
         scale = this.particleScale;
 
-        this.particleMaxAge = (int)(8.0D / (Math.random() * 0.8D + 0.2D));
-        this.particleMaxAge = (int)((float)this.particleMaxAge * scale);
+        this.particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D));
+        this.particleMaxAge = (int) ((float) this.particleMaxAge * scale);
 
     }
 
@@ -83,6 +90,20 @@ public class ParticleXPOrb  extends ParticleBase {
 
     @Override
     public void onUpdate() {
+        if (orbit) {
+            double d1 = (destX - this.posX) / 8.0D;
+            double d2 = (destY + 0.25D / 2.0D - this.posY) / 8.0D;
+            double d3 = (destZ - this.posZ) / 8.0D;
+            double d4 = Math.sqrt(d1 * d1 + d2 * d2 + d3 * d3);
+            double d5 = 1.0D - d4;
+
+            if (d5 > 0.0D) {
+                d5 = d5 * d5;
+                this.motionX += d1 / d4 * d5 * 0.01D;
+                this.motionY += d2 / d4 * d5 * 0.01D;
+                this.motionZ += d3 / d4 * d5 * 0.01D;
+            }
+        }
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
