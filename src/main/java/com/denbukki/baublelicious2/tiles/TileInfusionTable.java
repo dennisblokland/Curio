@@ -40,11 +40,14 @@ import java.util.Random;
 public class TileInfusionTable extends TileEntity implements ITickable {
 
 
+    public int infuseTime;
+    private int totalInfuseTime = 200;
+    public int level = 0;
+
     public ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
             if (!world.isRemote) {
-                lastChangeTime = world.getTotalWorldTime();
                 Baublelicious2.network.sendToAllAround(new PacketUpdateInfusionTable(TileInfusionTable.this), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
                 if (inventory.getStackInSlot(0).getItemDamage() != 0) {
 
@@ -76,10 +79,7 @@ public class TileInfusionTable extends TileEntity implements ITickable {
     }
 
 
-    public long lastChangeTime;
-    private int infuseTime;
-    private int totalInfuseTime = 200;
-    private int level = 0;
+
 
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
@@ -150,7 +150,6 @@ public class TileInfusionTable extends TileEntity implements ITickable {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setTag("inventory", inventory.serializeNBT());
-        compound.setLong("lastChangeTime", lastChangeTime);
         compound.setInteger("level", (short) level);
         compound.setInteger("infuseTime", (short) infuseTime);
 
@@ -160,7 +159,6 @@ public class TileInfusionTable extends TileEntity implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         inventory.deserializeNBT(compound.getCompoundTag("inventory"));
-        lastChangeTime = compound.getLong("lastChangeTime");
         level = compound.getInteger("level");
         infuseTime = compound.getInteger("infuseTime");
         super.readFromNBT(compound);
