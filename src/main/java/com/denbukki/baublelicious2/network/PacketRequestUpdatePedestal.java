@@ -1,8 +1,9 @@
 package com.denbukki.baublelicious2.network;
 
 
-import com.denbukki.baublelicious2.tiles.TileEntityInfusionTable;
+import com.denbukki.baublelicious2.tiles.TileEntityPedestal;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -10,20 +11,22 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketRequestUpdateInfusionTable implements IMessage {
+import java.util.UUID;
+
+public class PacketRequestUpdatePedestal implements IMessage {
 
     private BlockPos pos;
     private int dimension;
 
-    public PacketRequestUpdateInfusionTable(BlockPos pos, int dimension) {
+    public PacketRequestUpdatePedestal(BlockPos pos, int dimension) {
         this.pos = pos;
         this.dimension = dimension;
     }
 
-    public PacketRequestUpdateInfusionTable(TileEntityInfusionTable te) {
+    public PacketRequestUpdatePedestal(TileEntityPedestal te) {
         this(te.getPos(), te.getWorld().provider.getDimension());
     }
-    public PacketRequestUpdateInfusionTable(){
+    public PacketRequestUpdatePedestal(){
 
     }
     @Override
@@ -38,18 +41,19 @@ public class PacketRequestUpdateInfusionTable implements IMessage {
         dimension = buf.readInt();
     }
 
-    public static class Handler implements IMessageHandler<PacketRequestUpdateInfusionTable, PacketUpdateInfusionTable> {
+    public static class Handler implements IMessageHandler<PacketRequestUpdatePedestal, PacketUpdatePedestal> {
 
         @Override
-        public PacketUpdateInfusionTable onMessage(PacketRequestUpdateInfusionTable message, MessageContext ctx) {
+        public PacketUpdatePedestal onMessage(PacketRequestUpdatePedestal message, MessageContext ctx) {
             World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(message.dimension);
-            TileEntityInfusionTable te = (TileEntityInfusionTable)world.getTileEntity(message.pos);
+            TileEntityPedestal te = (TileEntityPedestal)world.getTileEntity(message.pos);
             if (te != null) {
-                return new PacketUpdateInfusionTable(te);
+                return new PacketUpdatePedestal(te);
             } else {
                 return null;
             }
         }
+
 
     }
 }

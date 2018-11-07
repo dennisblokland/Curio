@@ -1,7 +1,7 @@
 package com.denbukki.baublelicious2.blocks;
 
 import com.denbukki.baublelicious2.items.ItemMysticCrystal;
-import com.denbukki.baublelicious2.tiles.TileInfusionTable;
+import com.denbukki.baublelicious2.tiles.TileEntityInfusionTable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -48,7 +48,7 @@ public class BlockInfusionTable extends BlockBaseContrainer {
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
             ItemStack heldItem = player.getHeldItem(hand);
-            TileInfusionTable tile = (TileInfusionTable) world.getTileEntity(pos);
+            TileEntityInfusionTable tile = (TileEntityInfusionTable) world.getTileEntity(pos);
             IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side);
             if (heldItem.getItem() instanceof ItemMysticCrystal && heldItem.getItemDamage() == 0) {
                 if (!player.isSneaking()) {
@@ -71,7 +71,7 @@ public class BlockInfusionTable extends BlockBaseContrainer {
 
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        TileInfusionTable tile = (TileInfusionTable) world.getTileEntity(pos);
+        TileEntityInfusionTable tile = (TileEntityInfusionTable) world.getTileEntity(pos);
         IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
         ItemStack stack = itemHandler.getStackInSlot(0);
         if (!stack.isEmpty()) {
@@ -84,7 +84,7 @@ public class BlockInfusionTable extends BlockBaseContrainer {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileInfusionTable();
+        return new TileEntityInfusionTable();
     }
 
     public EnumBlockRenderType getRenderType(IBlockState state) {

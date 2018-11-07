@@ -81,9 +81,12 @@ public class ItemMysticCrystal extends ItemBase{
     }
 
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-        for (int level : Levels) {
-            items.add(new ItemStack(this, 1, level));
 
+        if (this.isInCreativeTab(tab)) {
+            for (int level : Levels) {
+                items.add(new ItemStack(this, 1, level));
+
+            }
         }
     }
 }

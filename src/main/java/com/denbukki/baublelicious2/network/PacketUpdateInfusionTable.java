@@ -1,7 +1,7 @@
 package com.denbukki.baublelicious2.network;
 
 
-import com.denbukki.baublelicious2.tiles.TileInfusionTable;
+import com.denbukki.baublelicious2.tiles.TileEntityInfusionTable;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -20,7 +20,7 @@ public class PacketUpdateInfusionTable implements IMessage {
         this.level = level;
         this.infuseTime = infuseTime;
     }
-    public PacketUpdateInfusionTable(TileInfusionTable te) {
+    public PacketUpdateInfusionTable(TileEntityInfusionTable te) {
         this(te.getPos(), te.inventory.getStackInSlot(0), te.level ,te.infuseTime);
     }
 
@@ -55,7 +55,7 @@ public class PacketUpdateInfusionTable implements IMessage {
         @Override
         public IMessage onMessage(PacketUpdateInfusionTable message, MessageContext ctx) {
             Minecraft.getMinecraft().addScheduledTask(() -> {
-                TileInfusionTable te = (TileInfusionTable)Minecraft.getMinecraft().world.getTileEntity(message.pos);
+                TileEntityInfusionTable te = (TileEntityInfusionTable)Minecraft.getMinecraft().world.getTileEntity(message.pos);
                 te.inventory.setStackInSlot(0, message.stack);
                 te.level = message.level;
                 te.infuseTime = message.infuseTime;

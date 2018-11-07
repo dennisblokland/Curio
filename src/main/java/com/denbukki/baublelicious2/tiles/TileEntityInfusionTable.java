@@ -1,32 +1,21 @@
 package com.denbukki.baublelicious2.tiles;
 
 import com.denbukki.baublelicious2.Baublelicious2;
-import com.denbukki.baublelicious2.blocks.BlockInfusionTable;
-import com.denbukki.baublelicious2.client.fx.ParticleXPOrb;
 import com.denbukki.baublelicious2.items.Baublelicious2Items;
 import com.denbukki.baublelicious2.items.ItemMysticCrystal;
 import com.denbukki.baublelicious2.network.PacketRequestUpdateInfusionTable;
 import com.denbukki.baublelicious2.network.PacketUpdateInfusionTable;
-import com.sun.org.apache.bcel.internal.generic.FALOAD;
-import net.minecraft.block.BlockFurnace;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -37,7 +26,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 
-public class TileInfusionTable extends TileEntity implements ITickable {
+public class TileEntityInfusionTable extends TileEntity implements ITickable {
 
 
     public int infuseTime;
@@ -48,7 +37,7 @@ public class TileInfusionTable extends TileEntity implements ITickable {
         @Override
         protected void onContentsChanged(int slot) {
             if (!world.isRemote) {
-                Baublelicious2.network.sendToAllAround(new PacketUpdateInfusionTable(TileInfusionTable.this), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
+                Baublelicious2.network.sendToAllAround(new PacketUpdateInfusionTable(TileEntityInfusionTable.this), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
                 if (inventory.getStackInSlot(0).getItemDamage() != 0) {
 
                     infusionFinished();

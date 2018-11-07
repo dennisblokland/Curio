@@ -33,6 +33,8 @@ public class Baublelicious2Blocks {
 
     public static final BlockCrystal blockAirCrystal = new BlockCrystal("AirCrystal", Baublelicious2Items.itemAirShard,airBiomesList);
 
+    public static final BlockPedestal blockPedestal = new BlockPedestal();
+
     public static void register(IForgeRegistry<Block> registry) {
         registry.registerAll(
                 blockMysticOre,
@@ -40,7 +42,8 @@ public class Baublelicious2Blocks {
                 blockEarthCrystal,
                 blockWaterCrystal,
                 blockAirCrystal,
-                blockInfusionTable
+                blockInfusionTable,
+                blockPedestal
         );
 
     }
@@ -52,7 +55,8 @@ public class Baublelicious2Blocks {
                 blockEarthCrystal.createItemBlock(),
                 blockWaterCrystal.createItemBlock(),
                 blockAirCrystal.createItemBlock(),
-                blockInfusionTable.createItemBlock()
+                blockInfusionTable.createItemBlock(),
+                blockPedestal.createItemBlock()
         );
     }
 
@@ -63,5 +67,6 @@ public class Baublelicious2Blocks {
         blockWaterCrystal.registerItemModel(Item.getItemFromBlock(blockWaterCrystal));
         blockAirCrystal.registerItemModel(Item.getItemFromBlock(blockAirCrystal));
         blockInfusionTable.registerItemModel(Item.getItemFromBlock(blockInfusionTable));
+        blockPedestal.registerItemModel(Item.getItemFromBlock(blockPedestal));
     }
 }

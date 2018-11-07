@@ -2,9 +2,9 @@ package com.denbukki.baublelicious2.client;
 
 import com.denbukki.baublelicious2.CommonProxy;
 import com.denbukki.baublelicious2.ModInfo;
-import com.denbukki.baublelicious2.blocks.Baublelicious2Blocks;
 import com.denbukki.baublelicious2.client.fx.ParticleXPOrb;
-import com.denbukki.baublelicious2.tiles.TileInfusionTable;
+import com.denbukki.baublelicious2.tiles.TileEntityInfusionTable;
+import com.denbukki.baublelicious2.tiles.TileEntityPedestal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -26,7 +26,8 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerRenderers() {
-        ClientRegistry.bindTileEntitySpecialRenderer(TileInfusionTable.class, new TileEntityInfusionTableRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionTable.class, new TileEntityInfusionTableRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPedestal.class, new TileEntityPedestalRenderer());
         MinecraftForge.EVENT_BUS.register(new TextureStichHandler());
     }
 

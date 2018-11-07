@@ -67,6 +67,8 @@ public class Baublelicious2Items {
         //baubles
         ((BaublesItemBase)itemRing).registerItemModel();
         ((BaublesItemBase)itemAmulet).registerItemModel();
+        ((BaublesItemBase)itemBelt).registerItemModel();
+
         ((BaublesItemBase)itemAmuletFieryCore).registerItemModel();
         ((BaublesItemBase)itemAmuletNightvision).registerItemModel();
         ((BaublesItemBase)itemDivingAmulet).registerItemModel();

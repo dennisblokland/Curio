@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "baublelicious2:pedestal","y": 90  },
+        "facing=south": { "model": "baublelicious2:pedestal","y": 270 },
+        "facing=west":  { "model": "baublelicious2:pedestal" },
+        "facing=east":  { "model": "baublelicious2:pedestal","y": 180  }
+    }
+}

@@ -1,28 +1,31 @@
 package com.denbukki.baublelicious2.client;
 
+import com.denbukki.baublelicious2.blocks.BlockPedestal;
 import com.denbukki.baublelicious2.tiles.TileEntityInfusionTable;
+import com.denbukki.baublelicious2.tiles.TileEntityPedestal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.entity.RenderItemFrame;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.MapData;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
-public class TileEntityInfusionTableRenderer extends TileEntitySpecialRenderer<TileEntityInfusionTable>
+public class TileEntityPedestalRenderer extends TileEntitySpecialRenderer<TileEntityPedestal>
 {
 
-    public void render(TileEntityInfusionTable te, double x, double y, double z, float partialTicks, int destroyStage, float alpha)
-    {
+    public void render(TileEntityPedestal te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         World world = this.getWorld();
-        TileEntityInfusionTable tile = (TileEntityInfusionTable)world.getTileEntity(te.getPos());
+        TileEntityPedestal tile = (TileEntityPedestal) world.getTileEntity(te.getPos());
         ItemStack stack = tile.inventory.getStackInSlot(0);
         if (!stack.isEmpty()) {
             GlStateManager.enableRescaleNormal();
@@ -31,9 +34,12 @@ public class TileEntityInfusionTableRenderer extends TileEntitySpecialRenderer<T
             RenderHelper.enableStandardItemLighting();
             GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
             GlStateManager.pushMatrix();
-            GlStateManager.translate(x + 0.5, y + 1.1, z + 0.5);
-            GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks) * 4, 0, 1, 0);
+            GlStateManager.translate(x + 0.5, y + 0.7, z + 0.5);
+            GlStateManager.rotate(180,0,1,0);
 
+            GlStateManager.rotate( BlockPedestal.getRationFromMeta(te.getBlockMetadata()), 0, 1, 0);
+            GlStateManager.translate(0, 0, -0.085);
+            GlStateManager.rotate(-45, 1, 0, 0);
             IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(stack, te.getWorld(), null);
             model = ForgeHooksClient.handleCameraTransforms(model, ItemCameraTransforms.TransformType.GROUND, false);
 
@@ -44,5 +50,7 @@ public class TileEntityInfusionTableRenderer extends TileEntitySpecialRenderer<T
             GlStateManager.disableRescaleNormal();
             GlStateManager.disableBlend();
         }
+
+
     }
 }
