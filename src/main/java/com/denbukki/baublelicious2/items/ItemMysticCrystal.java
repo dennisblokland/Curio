@@ -53,6 +53,9 @@ public class ItemMysticCrystal extends ItemBase{
 
                 player.addExperienceLevel(damage);
                 stack.setCount(stack.getCount()-1);
+                if(!player.isCreative()){
+                    player.inventory.addItemStackToInventory(new ItemStack(Baublelicious2Items.itemMysticCrystalDust,1));
+                }
             }
         }
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);

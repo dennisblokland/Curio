@@ -61,7 +61,7 @@ public class BlockInfusionTable extends BlockBaseContrainer {
                 }
             } else if (player.isSneaking()) {
                 if(!tile.isWorking()){
-                    player.setHeldItem(hand, itemHandler.extractItem(0, 64, false));
+                    player.inventory.addItemStackToInventory(itemHandler.extractItem(0, 64, false));
                 }
             }
         }
