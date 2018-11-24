@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dennisblokland/Baublelicious2.svg?branch=master)](https://travis-ci.org/dennisblokland/Baublelicious2) 
+[![Build Status](https://travis-ci.org/dennisblokland/Curio.svg?branch=master)](https://travis-ci.org/dennisblokland/Curio) 
 
 Curio
 noun, plural cu·ri·os.
