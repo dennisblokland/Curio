@@ -1,0 +1,38 @@
+itemGroup.Curio=Curio
+
+#ITEMS
+item.curio.ItemRing.name=Ring
+item.curio.ItemBelt.name=Belt
+item.curio.ItemAmulet.name=Amulet
+
+item.curio.ItemMystic_Crystal.name=Mystic Crystal
+item.curio.ItemAirShard.name=Air Crystal Shard
+item.curio.ItemWaterShard.name=Water Crystal Shard
+item.curio.ItemEarthShard.name=Earth Crystal Shard
+item.curio.ItemFireShard.name=Fire Crystal Shard
+
+item.curio.ItemMysticCrystalDust.name=Mystic Crystal Dust
+
+item.curio.ItemBeltWaterWalking.name=Belt of Water Walking
+item.curio.ItemDivingAmulet.name=Amulet of Diving
+item.curio.ItemRingOfFlight.name=Ring of Flight
+
+item.curio.ItemSpeedBelt.name=Speed Belt
+
+item.curio.ItemFallingBelt.name=Falling Belt
+item.curio.ItemGrowthPendant.name=Growth Pendant
+item.curio.ItemAmuletNightvision.name=Amulet of Nightvision
+item.curio.ItemAmuletFieryCore.name=Amulet of the Fiery Core
+
+
+#BLOCKS
+tile.curio.Mystic_Ore.name=Mystic Ore
+tile.curio.FireCrystal.name=Fire Crystal
+tile.curio.WaterCrystal.name=Water Crystal
+tile.curio.EarthCrystal.name=Earth Crystal
+tile.curio.AirCrystal.name=Air Crystal
+
+tile.curio.Infusion_Table.name=Infusing Table
+tile.curio.BlockPedestal.name=Pedestal
+
+

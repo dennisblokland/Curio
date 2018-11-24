@@ -18,7 +18,7 @@ ext.configFile = file('build.properties')
 ext.config = parseConfig(configFile)
 
 version = "${config.version}-${config.build_number}"
-group= "com.denbukki.baublelicious2"
+group= "com.denbukki.curio"
 archivesBaseName = config.mod_name
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -47,7 +47,7 @@ repositories {
 minecraft {
     version = "${config.mc_version}-${config.forge_version}"
     runDir = "run"
-    replaceIn "src/main/java/com/denbukki/baublelicious2/ModInfo.java"
+    replaceIn "src/main/java/com/denbukki/curio/ModInfo.java"
     replace "@VERSION@", project.version
     replace 'GRADLE:BUILD', config.build_number
     replace 'GRADLE:VERSION', config.version

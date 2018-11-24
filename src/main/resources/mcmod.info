@@ -1,7 +1,7 @@
 [
 {
-  "modid": "baublelicious2",
-  "name": "Baublelicious2",
+  "modid": "curio",
+  "name": "Curio",
   "description": "Expansion for Baubles",
   "version": "${version}",
   "mcversion": "${mcversion}",
