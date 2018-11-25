@@ -14,18 +14,20 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class PacketUpdateInfusionTable implements IMessage {
 
 
-    public PacketUpdateInfusionTable(BlockPos pos, ItemStack stack, int level, int infuseTime) {
+    public PacketUpdateInfusionTable(BlockPos pos, ItemStack stack, ItemStack stack2, int level, int infuseTime) {
         this.pos = pos;
         this.stack = stack;
+        this.stack2 = stack2;
         this.level = level;
         this.infuseTime = infuseTime;
     }
     public PacketUpdateInfusionTable(TileEntityInfusionTable te) {
-        this(te.getPos(), te.inventory.getStackInSlot(0), te.level ,te.infuseTime);
+        this(te.getPos(), te.inventory.getStackInSlot(0), te.inventory.getStackInSlot(1), te.level ,te.infuseTime);
     }
 
     private BlockPos pos;
     private ItemStack stack;
+    private ItemStack stack2;
     private int level;
     private int infuseTime;
 
@@ -37,6 +39,7 @@ public class PacketUpdateInfusionTable implements IMessage {
     public void toBytes(ByteBuf buf) {
         buf.writeLong(pos.toLong());
         ByteBufUtils.writeItemStack(buf, stack);
+        ByteBufUtils.writeItemStack(buf, stack2);
         buf.writeInt(level);
         buf.writeInt(infuseTime);
 
@@ -46,6 +49,7 @@ public class PacketUpdateInfusionTable implements IMessage {
     public void fromBytes(ByteBuf buf) {
         pos = BlockPos.fromLong(buf.readLong());
         stack = ByteBufUtils.readItemStack(buf);
+        stack2 = ByteBufUtils.readItemStack(buf);
         level = buf.readInt();
         infuseTime = buf.readInt();
     }
@@ -57,6 +61,7 @@ public class PacketUpdateInfusionTable implements IMessage {
             Minecraft.getMinecraft().addScheduledTask(() -> {
                 TileEntityInfusionTable te = (TileEntityInfusionTable)Minecraft.getMinecraft().world.getTileEntity(message.pos);
                 te.inventory.setStackInSlot(0, message.stack);
+                te.inventory.setStackInSlot(1, message.stack2);
                 te.level = message.level;
                 te.infuseTime = message.infuseTime;
             });

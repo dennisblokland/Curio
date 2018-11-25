@@ -2,11 +2,13 @@ package com.denbukki.curio.tiles;
 
 import com.denbukki.curio.Curio;
 import com.denbukki.curio.items.CurioItems;
+import com.denbukki.curio.items.Infusable;
 import com.denbukki.curio.items.ItemMysticCrystal;
 import com.denbukki.curio.network.PacketRequestUpdateInfusionTable;
 import com.denbukki.curio.network.PacketUpdateInfusionTable;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -33,12 +35,12 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
     private int totalInfuseTime = 200;
     public int level = 0;
 
-    public ItemStackHandler inventory = new ItemStackHandler(1) {
+    public ItemStackHandler inventory = new ItemStackHandler(2) {
         @Override
         protected void onContentsChanged(int slot) {
             if (!world.isRemote) {
                 Curio.network.sendToAllAround(new PacketUpdateInfusionTable(TileEntityInfusionTable.this), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
-                if (inventory.getStackInSlot(0).getItemDamage() != 0) {
+                if (slot == 0 && inventory.getStackInSlot(0).getItemDamage() != 0) {
 
                     infusionFinished();
                 }
@@ -75,23 +77,16 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
         return new AxisAlignedBB(getPos(), getPos().add(1, 2, 1));
     }
 
-    public void infuseItem(EntityPlayer player) {
+    public void infuseItem(EntityPlayer player, int level) {
 
-        if (player.experienceLevel < 5) {
+        if (player.experienceLevel < level || level == 0) {
             return;
         }
+
+        this.level = level;
         ItemMysticCrystal item = (ItemMysticCrystal) CurioItems.itemMysticCrystal;
         this.world.playSound(null, pos.getX(), (double) pos.getY() + 0.5D, pos.getZ(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1F, 1);
-
-        int playerLevel = player.experienceLevel;
-        int applied = 0;
-        for (int range : item.Levels) {
-            if (range <= playerLevel)
-                applied = range;
-            else
-                break;
-        }
-        level = applied;
+        this.inventory.setStackInSlot(1 , new ItemStack(Items.AIR));
         player.onEnchant(null, level);
         Random rand = new Random();
         double d0 = (double) pos.getX() + 0.5D + ((double) rand.nextFloat() - 0.5D) * 0.2D;
@@ -110,7 +105,7 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
     @Override
     public void update() {
         ItemStack stack = inventory.getStackInSlot(0);
-        if (stack.getItem() instanceof ItemMysticCrystal) {
+        if (stack.getItem() instanceof Infusable) {
             if (level != 0) {
                 ++this.infuseTime;
                 if (this.infuseTime == this.totalInfuseTime) {
@@ -175,9 +170,6 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
         }
     }
 
-    public boolean isEmpty() {
-        return this.inventory.getStackInSlot(0).isEmpty();
-    }
 
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {

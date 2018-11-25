@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemMysticCrystal extends ItemBase{
+public class ItemMysticCrystal extends ItemBase implements Infusable{
 
     public ItemMysticCrystal(){
         super("ItemMystic_Crystal");
@@ -85,5 +85,10 @@ public class ItemMysticCrystal extends ItemBase{
 
             }
         }
+    }
+
+    @Override
+    public int[] getLevels() {
+        return Levels;
     }
 }
