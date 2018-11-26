@@ -1,18 +1,20 @@
 package com.denbukki.curio.client.fx;
 
 import com.denbukki.curio.client.TextureStichHandler;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
 
-public class ParticleXPOrb extends ParticleBase {
+public class ParticleXPOrb extends Particle {
 
     private double destX;
     private double destY;
     private double destZ;
     private boolean orbit;
     private final float scale;
+
 
     public ParticleXPOrb(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, boolean orbit) {
         super(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);

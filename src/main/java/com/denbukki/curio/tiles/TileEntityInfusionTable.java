@@ -1,6 +1,7 @@
 package com.denbukki.curio.tiles;
 
 import com.denbukki.curio.Curio;
+import com.denbukki.curio.blocks.CurioBlocks;
 import com.denbukki.curio.items.CurioItems;
 import com.denbukki.curio.items.Infusable;
 import com.denbukki.curio.items.ItemMysticCrystal;
@@ -34,6 +35,8 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
     public int infuseTime;
     private int totalInfuseTime = 200;
     public int level = 0;
+    private static final int CRAFT_DONE_EVENT = 2;
+    private static final int CRAFT_EFFECT_EVENT = 55;
 
     public ItemStackHandler inventory = new ItemStackHandler(2) {
         @Override
@@ -41,13 +44,35 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
             if (!world.isRemote) {
                 Curio.network.sendToAllAround(new PacketUpdateInfusionTable(TileEntityInfusionTable.this), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
                 if (slot == 0 && inventory.getStackInSlot(0).getItemDamage() != 0) {
+                    world.addBlockEvent(getPos(), CurioBlocks.blockInfusionTable, CRAFT_DONE_EVENT, 0);
 
-                    infusionFinished();
                 }
             }
         }
     };
-
+    @Override
+    public boolean receiveClientEvent(int id, int param) {
+        switch (id) {
+            case CRAFT_EFFECT_EVENT: {
+                Random rand = new Random();
+                double d0 = (double) pos.getX() + 0.5D + ((double) rand.nextFloat() - 0.5D) * 0.2D;
+                double d1 = (double) ((float) pos.getY() + 0.0625F);
+                double d2 = (double) pos.getZ() + 0.5D + ((double) rand.nextFloat() - 0.5D) * 0.2D;
+                for (int i = 1; i < level; i++) {
+                    float f1 = 0.025F;
+                    float f2 = -0.1f + rand.nextFloat() * (0.1f - -0.1f);
+                    float f3 = -0.1f + rand.nextFloat() * (0.1f - -0.1f);
+                    Curio.proxy.OrbFX(d0, d1 + 1.1, d2, (double) f2, (double) f1, (double) f3, 200, true);
+                }
+                return true;
+            }
+            case CRAFT_DONE_EVENT:{
+                infusionFinished();
+                return true;
+            }
+            default: return super.receiveClientEvent(id, param);
+        }
+    }
     public void infusionFinished() {
         double x = (double) pos.getX() + 0.5D;
         double y = (double) ((float) pos.getY() + 0.75D);
@@ -63,6 +88,7 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
             Double motionX = Math.cos(yaw / 180.0 * Math.PI);
             Double MotionZ = Math.sin(yaw / 180.0 * Math.PI);
             Curio.proxy.OrbFX(x, y, z, motionX, (double) 0, MotionZ, 25, false);
+
             this.world.playSound(null, pos.getX(), (double) pos.getY() + 0.5D, pos.getZ(), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 1F, 1);
 
         }
@@ -88,16 +114,8 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
         this.world.playSound(null, pos.getX(), (double) pos.getY() + 0.5D, pos.getZ(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1F, 1);
         this.inventory.setStackInSlot(1 , new ItemStack(Items.AIR));
         player.onEnchant(null, level);
-        Random rand = new Random();
-        double d0 = (double) pos.getX() + 0.5D + ((double) rand.nextFloat() - 0.5D) * 0.2D;
-        double d1 = (double) ((float) pos.getY() + 0.0625F);
-        double d2 = (double) pos.getZ() + 0.5D + ((double) rand.nextFloat() - 0.5D) * 0.2D;
-        for (int i = 1; i < level; i++) {
-            float f1 = 0.025F;
-            float f2 = -0.1f + rand.nextFloat() * (0.1f - -0.1f);
-            float f3 = -0.1f + rand.nextFloat() * (0.1f - -0.1f);
-            Curio.proxy.OrbFX(d0, d1 + 1.1, d2, (double) f2, (double) f1, (double) f3, 200, true);
-        }
+        world.addBlockEvent(getPos(), CurioBlocks.blockInfusionTable, CRAFT_EFFECT_EVENT, 0);
+
 
     }
 

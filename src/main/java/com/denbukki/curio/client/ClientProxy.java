@@ -13,7 +13,9 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy {
     @Override
@@ -40,6 +42,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void OrbFX(double x, double y, double z, double mX, double mY, double mZ, int age, boolean orbit) {
+
         ParticleXPOrb particle = new ParticleXPOrb(Minecraft.getMinecraft().world, x, y, z, mX, mY, mZ, orbit);
         particle.setMaxAge(age);
         Minecraft.getMinecraft().effectRenderer.addEffect(particle);

@@ -128,7 +128,7 @@ public class TileEntityPedestal extends TileEntity implements ITickable {
             }
         } else {
             ItemStack bauble = inventory.getStackInSlot(0);
-            if (bauble != null) {
+            if (bauble != null && !playerUUID.equals(new UUID(0,0))) {
                 Item baubleItem = bauble.getItem();
                 if (baubleItem instanceof IBauble) {
                     EntityPlayer player = PlayerHelper.getPlayerFromUUID(playerUUID, this.world);

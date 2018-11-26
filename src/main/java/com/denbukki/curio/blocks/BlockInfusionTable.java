@@ -53,36 +53,37 @@ public class BlockInfusionTable extends BlockBaseContrainer {
             ItemStack heldItem = player.getHeldItem(hand);
             TileEntityInfusionTable tile = (TileEntityInfusionTable) world.getTileEntity(pos);
             IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side);
-
+            ItemStack tileItem = tile.inventory.getStackInSlot(0);
                 if (!player.isSneaking()) {
                     if (heldItem.getItem() instanceof Infusable && heldItem.getItemDamage() == 0) {
                         if (tile.inventory.getStackInSlot(0).isEmpty()) {
                             itemHandler.insertItem(0, new ItemStack(heldItem.getItem(), 1, 0), false);
-                            tile.infuseItem(player, ((Infusable) heldItem.getItem()).getLevels()[tile.inventory.getStackInSlot(1).getCount()]);
+
                             heldItem.setCount(heldItem.getCount() - 1);
                             tile.markDirty();
                         }
                     }
-                    else if(heldItem.getItem() instanceof ItemDye && heldItem.getItemDamage() == 4){
-                        if (tile.inventory.getStackInSlot(1).getCount() < 9) {
+                    else if(!tileItem.isEmpty() &&heldItem.getItem() instanceof ItemDye && heldItem.getItemDamage() == 4){
+                        Infusable infusable = (Infusable)tileItem.getItem();
+                        if (tile.inventory.getStackInSlot(1).getCount() < infusable.getLevels().length) {
                             itemHandler.insertItem(1, new ItemStack(heldItem.getItem(), 1, heldItem.getMetadata()), false);
                             heldItem.setCount(heldItem.getCount() - 1);
                             tile.markDirty();
                         }
+                    } else if(heldItem.isEmpty()){
+                        tile.infuseItem(player, ((Infusable) tile.inventory.getStackInSlot(0).getItem()).getLevels()[tile.inventory.getStackInSlot(1).getCount()]);
                     }
 
             } else if (player.isSneaking()) {
                 if(!tile.isWorking()){
-                    if(!tile.inventory.getStackInSlot(0).isEmpty()){
-                        player.inventory.addItemStackToInventory(itemHandler.extractItem(0, 64, false));
-                    }else{
+                    if(!tile.inventory.getStackInSlot(1).isEmpty()){
                         player.inventory.addItemStackToInventory(itemHandler.extractItem(1, 1, false));
-
+                    }else{
+                        player.inventory.addItemStackToInventory(itemHandler.extractItem(0, 64, false));
                     }
                 }
             }
         }
-
         return true;
     }
 
