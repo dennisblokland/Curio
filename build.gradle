@@ -8,6 +8,7 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
     }
+
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.sonarqube'
