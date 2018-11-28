@@ -43,7 +43,7 @@ public class TileEntityInfusionTableRenderer extends TileEntitySpecialRenderer<T
             GlStateManager.translate(x + 0.25, y + 0.25 , z+ 0.25);
             GlStateManager.scale(0.5,0.5,0.5);
             GlStateManager.translate(0.5F, 1.25F, 0.5F);
-            GlStateManager.rotate(angles[i] + (float) time, 0F, 1F, 0F);
+            GlStateManager.rotate(angles[i] + time, 0F, 1F, 0F);
             GlStateManager.translate(1.125F, 0F, 0.25F);
             GlStateManager.rotate(90F, 0F, 1F, 0F);
             GlStateManager.translate(0D, 0.075 * Math.sin((time + i * 10) / 5D), 0F);

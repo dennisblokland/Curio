@@ -50,9 +50,7 @@ public class ItemRingMagnet extends BaublesItemBase {
             return false;
 
         ItemStack stack = item.getItem();
-        if (stack.isEmpty())
-            return false;
-        return true;
+        return !stack.isEmpty();
     }
 
 

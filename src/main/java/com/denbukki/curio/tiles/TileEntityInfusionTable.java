@@ -77,7 +77,7 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
 
     public void infusionFinished() {
         double x = (double) pos.getX() + 0.5D;
-        double y = (double) ((float) pos.getY() + 0.75D);
+        double y = ((float) pos.getY() + 0.75D);
         double z = (double) pos.getZ() + 0.5D;
 
         for (int i = 0; i < 360; i++) {
