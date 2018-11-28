@@ -28,6 +28,7 @@ public class CurioItems {
     public static final Item itemSpeedBelt= new ItemSpeedBelt();
 
     public static final Item itemRingOfFlight= new ItemRingOfFlight();
+    public static final Item ItemRingMagnet = new ItemRingMagnet();
 
 
     public static void register(IForgeRegistry<Item> registry) {
@@ -48,7 +49,8 @@ public class CurioItems {
                 itemBeltWaterWalking,
                 itemFallingBelt,
                 itemSpeedBelt,
-                itemRingOfFlight
+                itemRingOfFlight,
+                ItemRingMagnet
         );
 
 
@@ -77,5 +79,6 @@ public class CurioItems {
         ((BaublesItemBase)itemFallingBelt).registerItemModel();
         ((BaublesItemBase)itemSpeedBelt).registerItemModel();
         ((BaublesItemBase)itemRingOfFlight).registerItemModel();
+        ((BaublesItemBase)ItemRingMagnet).registerItemModel();
     }
 }

@@ -7,7 +7,6 @@ import com.denbukki.curio.items.Infusable;
 import com.denbukki.curio.items.ItemMysticCrystal;
 import com.denbukki.curio.network.PacketRequestUpdateInfusionTable;
 import com.denbukki.curio.network.PacketUpdateInfusionTable;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -18,8 +17,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -32,11 +29,11 @@ import java.util.Random;
 public class TileEntityInfusionTable extends TileEntity implements ITickable {
 
 
-    public int infuseTime;
-    private int totalInfuseTime = 200;
-    public int level = 0;
     private static final int CRAFT_DONE_EVENT = 2;
     private static final int CRAFT_EFFECT_EVENT = 55;
+    public int infuseTime;
+    public int level = 0;
+    private int totalInfuseTime = 200;
 
     public ItemStackHandler inventory = new ItemStackHandler(2) {
         @Override
@@ -50,6 +47,9 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
             }
         }
     };
+
+
+
     @Override
     public boolean receiveClientEvent(int id, int param) {
         switch (id) {
@@ -66,13 +66,15 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
                 }
                 return true;
             }
-            case CRAFT_DONE_EVENT:{
+            case CRAFT_DONE_EVENT: {
                 infusionFinished();
                 return true;
             }
-            default: return super.receiveClientEvent(id, param);
+            default:
+                return super.receiveClientEvent(id, param);
         }
     }
+
     public void infusionFinished() {
         double x = (double) pos.getX() + 0.5D;
         double y = (double) ((float) pos.getY() + 0.75D);
@@ -95,9 +97,6 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
 
     }
 
-
-
-
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
         return new AxisAlignedBB(getPos(), getPos().add(1, 2, 1));
@@ -112,13 +111,12 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
         this.level = level;
         ItemMysticCrystal item = (ItemMysticCrystal) CurioItems.itemMysticCrystal;
         this.world.playSound(null, pos.getX(), (double) pos.getY() + 0.5D, pos.getZ(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1F, 1);
-        this.inventory.setStackInSlot(1 , new ItemStack(Items.AIR));
+        this.inventory.setStackInSlot(1, new ItemStack(Items.AIR));
         player.onEnchant(null, level);
         world.addBlockEvent(getPos(), CurioBlocks.blockInfusionTable, CRAFT_EFFECT_EVENT, 0);
 
 
     }
-
 
     @Override
     public void update() {
@@ -144,7 +142,6 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
         }
     }
 
-
     public boolean isWorking() {
         return this.infuseTime > 0;
     }
@@ -165,21 +162,6 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
         infuseTime = compound.getInteger("infuseTime");
         super.readFromNBT(compound);
     }
-
-
-    public static void doDispense(World worldIn, ItemStack stack, BlockPos position) {
-        double d0 = position.getX() + 0.5;
-        double d1 = position.getY() + 1;
-        double d2 = position.getZ() + 0.5;
-
-
-        EntityItem entityitem = new EntityItem(worldIn, d0, d1, d2, stack);
-        entityitem.motionX = 0;
-        entityitem.motionZ = 0;
-
-        worldIn.spawnEntity(entityitem);
-    }
-
 
     @Override
     public void onLoad() {
