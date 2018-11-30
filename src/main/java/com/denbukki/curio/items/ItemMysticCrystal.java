@@ -65,12 +65,6 @@ public class ItemMysticCrystal extends ItemBase implements Infusable{
         return this.getDamage(stack) != 0;
     }
 
-    public String getUnlocalizedName(ItemStack stack)
-    {
-
-        return super.getUnlocalizedName();
-    }
-
     public void registerItemModel() {
         for (int level : Levels) {
             Curio.proxy.registerItemRenderer(this, level, name);

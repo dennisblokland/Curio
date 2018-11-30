@@ -65,13 +65,13 @@ public class BlockInfusionTable extends BlockBaseContrainer {
                     }
                     else if(!tileItem.isEmpty() &&heldItem.getItem() instanceof ItemDye && heldItem.getItemDamage() == 4){
                         Infusable infusable = (Infusable)tileItem.getItem();
-                        if (tile.inventory.getStackInSlot(1).getCount() < infusable.getLevels().length) {
+                        if (tile.inventory.getStackInSlot(1).getCount() < infusable.getLevels().length - 2) {
                             itemHandler.insertItem(1, new ItemStack(heldItem.getItem(), 1, heldItem.getMetadata()), false);
                             heldItem.setCount(heldItem.getCount() - 1);
                             tile.markDirty();
                         }
                     } else if(heldItem.isEmpty()){
-                        tile.infuseItem(player, ((Infusable) tile.inventory.getStackInSlot(0).getItem()).getLevels()[tile.inventory.getStackInSlot(1).getCount()]);
+                        tile.infuseItem(player, ((Infusable) tile.inventory.getStackInSlot(0).getItem()).getLevels()[tile.inventory.getStackInSlot(1).getCount() + 1]);
                     }
 
             } else if (player.isSneaking()) {

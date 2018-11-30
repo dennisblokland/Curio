@@ -72,7 +72,6 @@ public class ParticleXPOrb extends Particle {
         buffer.pos(f11 + rotationX * f10 - rotationXY * f10, f12 - rotationZ * f10, f13 + rotationYZ * f10 - rotationXZ * f10).tex(minU, maxV).color(particleRed, particleGreen, particleBlue, 1.0F).lightmap(j, k).endVertex();
     }
 
-    // avoid calculating lighting for bees, it is too much processing
     @Override
     public int getBrightnessForRender(float p_189214_1_) {
         return 15728880;

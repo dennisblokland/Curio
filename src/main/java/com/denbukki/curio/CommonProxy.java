@@ -2,6 +2,7 @@ package com.denbukki.curio;
 
 import com.denbukki.curio.client.fx.ParticleXPOrb;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumParticleTypes;

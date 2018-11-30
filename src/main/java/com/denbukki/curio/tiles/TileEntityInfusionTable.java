@@ -109,7 +109,6 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
         }
 
         this.level = level;
-        ItemMysticCrystal item = (ItemMysticCrystal) CurioItems.itemMysticCrystal;
         this.world.playSound(null, pos.getX(), (double) pos.getY() + 0.5D, pos.getZ(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1F, 1);
         this.inventory.setStackInSlot(1, new ItemStack(Items.AIR));
         player.onEnchant(null, level);
@@ -125,15 +124,13 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
             if (level != 0) {
                 ++this.infuseTime;
                 if (this.infuseTime == this.totalInfuseTime) {
-                    inventory.setStackInSlot(0, new ItemStack(CurioItems.itemMysticCrystal, 1, level));
+                    inventory.setStackInSlot(0, new ItemStack(this.inventory.getStackInSlot(0).getItem(), 1, level));
                     this.infuseTime = 0;
                     level = 0;
                     if (!world.isRemote) {
 
                     }
                 }
-
-
             }
         }
 
