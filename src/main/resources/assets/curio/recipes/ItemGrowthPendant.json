@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    " C ",
+    "BEB"
+  ],
+  "key": {
+    "A": {
+      "item": "curio:ItemAmulet"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 20
+    },
+    "E": {
+      "item": "curio:ItemEarthShard"
+    },
+    "B": {
+      "item": "minecraft:dye",
+      "data": 15
+    }
+  },
+  "result": {
+    "item": "curio:ItemGrowthPendant",
+    "data": 0
+  }
+}

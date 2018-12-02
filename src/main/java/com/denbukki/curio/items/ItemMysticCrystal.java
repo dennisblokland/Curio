@@ -19,7 +19,7 @@ import java.util.List;
 public class ItemMysticCrystal extends ItemBase implements Infusable{
 
     public ItemMysticCrystal(){
-        super("ItemMystic_Crystal");
+        super("ItemMysticCrystal");
         this.setHasSubtypes(true);
         setMaxDamage(0);
 

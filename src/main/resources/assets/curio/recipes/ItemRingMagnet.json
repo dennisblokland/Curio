@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "CRC",
+    " I "
+  ],
+  "key": {
+    "R": {
+      "item": "curio:ItemRing"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 10
+    },
+    "I": {
+      "item": "minecraft:Iron_Ingot"
+    }
+  },
+  "result": {
+    "item": "curio:ItemRingMagnet",
+    "data": 0
+  }
+}

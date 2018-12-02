@@ -30,12 +30,4 @@ public class BlockBase extends Block {
     public Item createItemBlock() {
         return new ItemBlock(this).setRegistryName(getRegistryName());
     }
-
-    @Override
-    public BlockBase setCreativeTab(CreativeTabs tab) {
-        super.setCreativeTab(tab);
-        return this;
-    }
-
-
 }

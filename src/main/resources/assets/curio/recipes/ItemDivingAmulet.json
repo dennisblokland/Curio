@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    " C ",
+    "QPW"
+  ],
+  "key": {
+    "A": {
+      "item": "curio:ItemAmulet"
+    },
+    "Q": {
+      "item": "curio:ItemAirShard"
+    },
+    "W": {
+      "item": "curio:ItemWaterShard"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 20
+    },
+    "P": {
+      "type": "minecraft:item_nbt",
+      "item": "minecraft:potion",
+      "nbt": {
+        "Potion":"minecraft:long_water_breathing"
+      }
+    }
+  },
+  "result": {
+    "item": "curio:ItemDivingAmulet",
+    "data": 0
+  }
+}

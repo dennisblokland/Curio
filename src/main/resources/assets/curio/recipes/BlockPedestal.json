@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CGC",
+    " D ",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:stone",
+      "data": 4
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "C": {
+        "item": "curio:ItemMysticCrystal",
+        "data": 20
+    }
+  },
+  "result": {
+    "item": "curio:BlockPedestal"
+  }
+}

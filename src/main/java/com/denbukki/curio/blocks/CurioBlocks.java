@@ -13,27 +13,27 @@ public class CurioBlocks {
 
     public static final BlockMysticOre blockMysticOre = new BlockMysticOre();
 
-    public static final BlockInfusionTable blockInfusionTable = new BlockInfusionTable();
-
-    public static final BlockCrystal blockFireCrystal = new BlockCrystal("FireCrystal", CurioItems.itemFireShard);
+    public static final BlockCrystal blockFireCrystal = new BlockCrystal("BlockFireCrystal", CurioItems.itemFireShard);
 
     private static final ArrayList<BiomeDictionary.Type> earthBiomesList = new ArrayList<BiomeDictionary.Type>(){{
         add(BiomeDictionary.Type.DENSE);
         add(BiomeDictionary.Type.FOREST);
     }};
 
-    public static final BlockCrystal blockEarthCrystal = new BlockCrystal("EarthCrystal", CurioItems.itemEarthShard,earthBiomesList );
+    public static final BlockCrystal blockEarthCrystal = new BlockCrystal("BlockEarthCrystal", CurioItems.itemEarthShard,earthBiomesList );
 
-    public static final BlockCrystal blockWaterCrystal = new BlockCrystal("WaterCrystal", CurioItems.itemWaterShard);
+    public static final BlockCrystal blockWaterCrystal = new BlockCrystal("BlockWaterCrystal", CurioItems.itemWaterShard);
 
     private static final ArrayList<BiomeDictionary.Type> airBiomesList = new ArrayList<BiomeDictionary.Type>(){{
         add(BiomeDictionary.Type.MOUNTAIN);
         add(BiomeDictionary.Type.HILLS);
     }};
 
-    public static final BlockCrystal blockAirCrystal = new BlockCrystal("AirCrystal", CurioItems.itemAirShard,airBiomesList);
+    public static final BlockCrystal blockAirCrystal = new BlockCrystal("BlockAirCrystal", CurioItems.itemAirShard,airBiomesList);
 
     public static final BlockPedestal blockPedestal = new BlockPedestal();
+
+    public static final BlockInfusionTable blockInfusionTable = new BlockInfusionTable();
 
     public static void register(IForgeRegistry<Block> registry) {
         registry.registerAll(

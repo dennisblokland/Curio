@@ -11,6 +11,6 @@
   "credits": "Azanor for making baubles",
   "logoFile": "BLLogo.png",
   "screenshots": [],
-  "dependencies": [baubles]
+  "dependencies": ["baubles"]
 }
 ]

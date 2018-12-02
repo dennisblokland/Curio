@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " L ",
+    "L L",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:Leather"
+    }
+  },
+  "result": {
+    "item": "curio:ItemBelt",
+    "data": 0
+  }
+}

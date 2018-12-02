@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    " C ",
+    " S "
+  ],
+  "key": {
+    "T": {
+      "item": "curio:ItemTiara"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 25
+    },
+    "S": {
+      "item": "minecraft:Shield"
+    }
+  },
+  "result": {
+    "item": "curio:ItemDeflectionTiara",
+    "data": 0
+  }
+}

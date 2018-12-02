@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "curio:items/ItemMystic_Crystal"
+    "layer0": "curio:items/ItemMysticCrystal"
   },
   "display": {
     "thirdperson": {

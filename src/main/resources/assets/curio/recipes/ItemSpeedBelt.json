@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    " C ",
+    "FPF"
+  ],
+  "key": {
+    "B": {
+      "item": "curio:ItemBelt"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 10
+    },
+    "P": {
+      "type": "minecraft:item_nbt",
+      "item": "minecraft:potion",
+      "nbt": {
+        "Potion":"minecraft:strong_swiftness"
+      }
+    },
+    "F": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "curio:ItemSpeedBelt",
+    "data": 0
+  }
+}

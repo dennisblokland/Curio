@@ -4,8 +4,9 @@ itemGroup.Curio=Curio
 item.curio.ItemRing.name=Ring
 item.curio.ItemBelt.name=Belt
 item.curio.ItemAmulet.name=Amulet
+item.curio.ItemTiara.name=Tiara
 
-item.curio.ItemMystic_Crystal.name=Mystic Crystal
+item.curio.ItemMysticCrystal.name=Mystic Crystal
 item.curio.ItemAirShard.name=Air Crystal Shard
 item.curio.ItemWaterShard.name=Water Crystal Shard
 item.curio.ItemEarthShard.name=Earth Crystal Shard
@@ -28,13 +29,13 @@ item.curio.ItemDeflectionTiara.name=Deflection Tiara
 
 
 #BLOCKS
-tile.curio.Mystic_Ore.name=Mystic Ore
-tile.curio.FireCrystal.name=Fire Crystal
-tile.curio.WaterCrystal.name=Water Crystal
-tile.curio.EarthCrystal.name=Earth Crystal
-tile.curio.AirCrystal.name=Air Crystal
+tile.curio.BlockMysticOre.name=Mystic Ore
+tile.curio.BlockFireCrystal.name=Fire Crystal
+tile.curio.BlockWaterCrystal.name=Water Crystal
+tile.curio.BlockEarthCrystal.name=Earth Crystal
+tile.curio.BlockAirCrystal.name=Air Crystal
 
-tile.curio.Infusion_Table.name=Infusing Table
+tile.curio.BlockInfusionTable.name=Infusing Table
 tile.curio.BlockPedestal.name=Pedestal
 
 

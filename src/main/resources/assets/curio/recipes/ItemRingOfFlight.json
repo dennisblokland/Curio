@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R ",
+    "FCF",
+    " S "
+  ],
+  "key": {
+    "R": {
+      "item": "curio:ItemRing"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 50
+    },
+    "S": {
+      "item": "curio:ItemAirShard"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "curio:ItemRingOfFlight",
+    "data": 0
+  }
+}

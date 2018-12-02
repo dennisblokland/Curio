@@ -25,7 +25,7 @@ public class BlockInfusionTable extends BlockBaseContrainer {
     private boolean isWorking;
 
     public BlockInfusionTable() {
-        super(Material.ROCK, "Infusion_Table");
+        super(Material.ROCK, "BlockInfusionTable");
         this.setHardness(5.0F);
         this.setResistance(2000.0F);
     }

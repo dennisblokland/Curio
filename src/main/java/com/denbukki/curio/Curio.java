@@ -27,7 +27,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = ModInfo.MOD_ID, name = ModInfo.NAME, version = ModInfo.VERSION)
+@Mod(modid = ModInfo.MOD_ID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = "required-after:baubles")
 
 public class Curio {
     @SidedProxy(clientSide = "com.denbukki.curio.client.ClientProxy", serverSide = "com.denbukki.curio.CommonProxy")
@@ -56,10 +56,11 @@ public class Curio {
 
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
-            CurioItems.register(event.getRegistry());
+
             GameRegistry.registerTileEntity(TileEntityInfusionTable.class, new ResourceLocation(ModInfo.MOD_ID,"TileEntityInfusionTable"));
             GameRegistry.registerTileEntity(TileEntityPedestal.class, new ResourceLocation(ModInfo.MOD_ID,"TileEntityPedestal"));
             CurioBlocks.registerItemBlocks(event.getRegistry());
+            CurioItems.register(event.getRegistry());
         }
 
         @SubscribeEvent

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    " C ",
+    "FSF"
+  ],
+  "key": {
+    "B": {
+      "item": "curio:ItemBelt"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 5
+    },
+    "S": {
+      "item": "curio:ItemAirShard"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "curio:ItemFallingBelt",
+    "data": 0
+  }
+}

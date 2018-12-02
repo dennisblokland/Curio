@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    " C ",
+    "SPS"
+  ],
+  "key": {
+    "A": {
+      "item": "curio:ItemAmulet"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 20
+    },
+    "S": {
+      "item": "curio:ItemFireShard"
+    },
+    "P": {
+      "type": "minecraft:item_nbt",
+      "item": "minecraft:potion",
+      "nbt": {
+        "Potion":"minecraft:long_fire_resistance"
+      }
+    }
+  },
+  "result": {
+    "item": "curio:ItemAmuletFieryCore",
+    "data": 0
+  }
+}

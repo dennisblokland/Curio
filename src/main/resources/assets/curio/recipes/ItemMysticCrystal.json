@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "curio:ItemMysticCrystalDust",
+      "data": 0
+    },
+    {
+      "item": "curio:ItemMysticCrystalDust",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "curio:ItemMysticCrystal",
+    "data": 0
+  }
+}

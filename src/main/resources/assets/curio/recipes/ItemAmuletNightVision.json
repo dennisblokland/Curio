@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    " C ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "curio:ItemAmulet"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 25
+    },
+    "S": {
+      "type": "minecraft:item_nbt",
+      "item": "minecraft:potion",
+      "nbt": {
+        "Potion":"minecraft:long_night_vision"
+      }
+    }
+  },
+  "result": {
+    "item": "curio:ItemAmuletNightVision",
+    "data": 0
+  }
+}

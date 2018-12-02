@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class BlockMysticOre extends BlockBase {
     public BlockMysticOre() {
-        super(Material.ROCK, "Mystic_Ore");
+        super(Material.ROCK, "BlockMysticOre");
         this.setHardness(3.0F);
         this.setResistance(5.0F);
         this.setHarvestLevel("pickaxe", 2);

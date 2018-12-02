@@ -13,7 +13,6 @@ public class CurioTab extends CreativeTabs {
     @Override
 
     public ItemStack getTabIconItem(){
-// Here you make the Icon of the creative Tab
-        return new ItemStack(CurioItems.itemRing);
+        return new ItemStack(CurioItems.itemMysticCrystal,1,0);
     }
 }

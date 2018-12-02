@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FMW",
+    " T ",
+    "A E"
+  ],
+  "key": {
+    "M": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 0
+    },
+    "A": {
+      "item": "curio:ItemAirShard"
+    },
+    "E": {
+      "item": "curio:ItemEarthShard"
+    },
+    "F": {
+      "item": "curio:ItemFireShard"
+    },
+    "W": {
+      "item": "curio:ItemWaterShard"
+    },
+    "T": {
+      "item": "minecraft:enchanting_table"
+    }
+  },
+  "result": {
+    "item": "curio:BlockInfusionTable",
+    "data": 0
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    " C ",
+    " S "
+  ],
+  "key": {
+    "B": {
+      "item": "curio:ItemBelt"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 10
+    },
+    "S": {
+      "item": "curio:ItemWaterShard"
+    }
+  },
+  "result": {
+    "item": "curio:ItemBeltWaterWalking",
+    "data": 0
+  }
+}
