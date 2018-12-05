@@ -3,7 +3,7 @@
   "pattern": [
     " R ",
     "FCF",
-    " S "
+    "SNS"
   ],
   "key": {
     "R": {
@@ -11,13 +11,16 @@
     },
     "C": {
       "item": "curio:ItemMysticCrystal",
-      "data": 50
+      "data": 100
     },
     "S": {
       "item": "curio:ItemAirShard"
     },
     "F": {
       "item": "minecraft:feather"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
     }
   },
   "result": {

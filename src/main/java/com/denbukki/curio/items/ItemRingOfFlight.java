@@ -28,18 +28,22 @@ public class ItemRingOfFlight extends BaublesItemBase {
 
 
     private void startFlying(EntityPlayer player) {
-        player.capabilities.allowFlying = true;
-        if (!player.getEntityWorld().isRemote) {
-            player.sendPlayerAbilities();
+        if(!player.isCreative()) {
+            player.capabilities.allowFlying = true;
+            if (!player.getEntityWorld().isRemote) {
+                player.sendPlayerAbilities();
+            }
         }
     }
 
     private void stopFlying(EntityPlayer player) {
-        player.capabilities.isFlying = false;
-        player.capabilities.allowFlying = false;
+        if(!player.isCreative()){
+            player.capabilities.isFlying = false;
+            player.capabilities.allowFlying = false;
 
-        if (!player.getEntityWorld().isRemote) {
-            player.sendPlayerAbilities();
+            if (!player.getEntityWorld().isRemote) {
+                player.sendPlayerAbilities();
+            }
         }
     }
 
