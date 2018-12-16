@@ -58,6 +58,7 @@ public class CurioBlocks {
                 blockInfusionTable.createItemBlock(),
                 blockPedestal.createItemBlock()
         );
+
     }
 
     public static void registerModels() {

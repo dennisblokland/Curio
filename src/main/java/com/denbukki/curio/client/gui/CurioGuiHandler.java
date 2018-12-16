@@ -1,6 +1,7 @@
 package com.denbukki.curio.client.gui;
 
 import com.denbukki.curio.blocks.Container.ContainerPedestal;
+import com.denbukki.curio.client.gui.book.GuiCurioBook;
 import com.denbukki.curio.tiles.TileEntityPedestal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -10,6 +11,8 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class CurioGuiHandler implements IGuiHandler {
     public static final int PEDESTAL = 0;
+    public static final int BOOK = 1;
+
     @Override
     public Container getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID) {
@@ -24,6 +27,8 @@ public class CurioGuiHandler implements IGuiHandler {
         switch (ID) {
             case PEDESTAL:
                 return new GuiPedestal(getServerGuiElement(ID, player, world, x, y, z), player.inventory);
+            case BOOK:
+                return new GuiCurioBook();
             default:
                 return null;
         }

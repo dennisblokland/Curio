@@ -15,19 +15,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-public class BaublesItemBase extends Item implements IBauble
+public class BaublesItemBase extends ItemBase implements IBauble
     {
         protected String name;
 
 
     public BaublesItemBase(String name)
         {
-            super();
-            this.name = name;
+            super(name);
             setMaxStackSize(1);
-            setCreativeTab(Curio.CURIO_TAB);
-            setUnlocalizedName(ModInfo.MOD_ID +"."+this.name);
-            setRegistryName(new ResourceLocation(ModInfo.MOD_ID, this.name));
         }
 
 

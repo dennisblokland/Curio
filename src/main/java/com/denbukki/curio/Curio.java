@@ -38,11 +38,14 @@ public class Curio {
 
     public static SimpleNetworkWrapper network;
 
+    public static BookManager bookManager;
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         GameRegistry.registerWorldGenerator(new CurioWorldGeneration(), 3);
         GameRegistry.registerWorldGenerator(new WorldgenCrystal(), 2);
         network = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MOD_ID);
+        bookManager = new BookManager();
         network.registerMessage(new PacketUpdateInfusionTable.Handler(), PacketUpdateInfusionTable.class, 0,Side.CLIENT);
         network.registerMessage(new PacketRequestUpdateInfusionTable.Handler(), PacketRequestUpdateInfusionTable.class, 1, Side.SERVER);
         network.registerMessage(new PacketUpdatePedestal.Handler(), PacketUpdatePedestal.class, 2,Side.CLIENT);
@@ -77,4 +80,6 @@ public class Curio {
         }
 
     }
+
+
 }

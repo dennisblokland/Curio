@@ -35,6 +35,9 @@ public class CurioItems {
     public static final Item itemMysticCrystalDust = new ItemBase("ItemMysticCrystalDust");
 
 
+    public static final Item ItemCurioBook = new ItemCurioBook();
+
+
     public static void register(IForgeRegistry<Item> registry) {
         registry.registerAll(
                 itemRing,
@@ -56,7 +59,8 @@ public class CurioItems {
                 itemAirShard,
                 itemEarthShard,
                 itemWaterShard,
-                itemFireShard
+                itemFireShard,
+                ItemCurioBook
         );
 
 
@@ -89,5 +93,7 @@ public class CurioItems {
         ((BaublesItemBase)ItemRingMagnet).registerItemModel();
 
         ((BaublesItemBase) ItemDeflectionTiara).registerItemModel();
+
+        ((ItemBase) ItemCurioBook).registerItemModel();
     }
 }

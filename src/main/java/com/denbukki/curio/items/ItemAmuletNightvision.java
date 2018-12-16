@@ -1,6 +1,7 @@
 package com.denbukki.curio.items;
 
 import baubles.api.BaubleType;
+import com.denbukki.curio.Curio;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;

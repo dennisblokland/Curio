@@ -1,8 +1,11 @@
 package com.denbukki.curio.client;
 
 import com.denbukki.curio.CommonProxy;
+import com.denbukki.curio.Curio;
 import com.denbukki.curio.ModInfo;
 import com.denbukki.curio.client.fx.ParticleXPOrb;
+import com.denbukki.curio.client.gui.CurioGuiHandler;
+import com.denbukki.curio.client.gui.book.GuiCurioBook;
 import com.denbukki.curio.tiles.TileEntityInfusionTable;
 import com.denbukki.curio.tiles.TileEntityPedestal;
 import net.minecraft.client.Minecraft;
@@ -52,4 +55,5 @@ public class ClientProxy extends CommonProxy {
     public void spawnParticle(EnumParticleTypes type, double x, double y, double z, double v, double v1, double v2) {
         Minecraft.getMinecraft().world.spawnParticle(type, z, y, z, v, v1, v2);
     }
+
 }
