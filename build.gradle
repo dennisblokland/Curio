@@ -18,7 +18,7 @@ ext.configFile = file('build.properties')
 
 ext.config = parseConfig(configFile)
 
-version = "${config.version}-${config.build_number}"
+version = "${config.version}"
 group= "com.denbukki.curio"
 archivesBaseName = config.mod_name
 
@@ -50,7 +50,6 @@ minecraft {
     runDir = "run"
     replaceIn "src/main/java/com/denbukki/curio/ModInfo.java"
     replace "@VERSION@", project.version
-    replace 'GRADLE:BUILD', config.build_number
     replace 'GRADLE:VERSION', config.version
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
