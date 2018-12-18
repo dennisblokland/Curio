@@ -5,6 +5,9 @@
   },
   "variants": {
     "inventory": { "model": "curio:watercrystal.obj" , "transform": "forge:default-block"},
-    "normal": { "model": "curio:watercrystal.obj" }
+    "facing=north": { "model": "curio:watercrystal.obj" },
+    "facing=south": { "model": "curio:watercrystal.obj", "y": 180 },
+    "facing=west":  { "model": "curio:watercrystal.obj", "y": 270 },
+    "facing=east":  { "model": "curio:watercrystal.obj", "y": 90 }
     }
 }

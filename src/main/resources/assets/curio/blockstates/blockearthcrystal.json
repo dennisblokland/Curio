@@ -5,6 +5,9 @@
   },
   "variants": {
     "inventory": { "model": "curio:earthcrystal.obj" , "transform": "forge:default-block"},
-    "normal": { "model": "curio:earthcrystal.obj" }
+    "facing=north": { "model": "curio:earthcrystal.obj" },
+    "facing=south": { "model": "curio:earthcrystal.obj", "y": 180 },
+    "facing=west":  { "model": "curio:earthcrystal.obj", "y": 270 },
+    "facing=east":  { "model": "curio:earthcrystal.obj", "y": 90 }
     }
 }

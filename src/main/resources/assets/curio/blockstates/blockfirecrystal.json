@@ -5,6 +5,9 @@
   },
   "variants": {
     "inventory": { "model": "curio:firecrystal.obj" , "transform": "forge:default-block"},
-    "normal": { "model": "curio:firecrystal.obj" }
+    "facing=north": { "model": "curio:firecrystal.obj" },
+    "facing=south": { "model": "curio:firecrystal.obj", "y": 180 },
+    "facing=west":  { "model": "curio:firecrystal.obj", "y": 270 },
+    "facing=east":  { "model": "curio:firecrystal.obj", "y": 90 }
     }
 }
