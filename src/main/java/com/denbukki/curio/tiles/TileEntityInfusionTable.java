@@ -107,7 +107,9 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
         if (player.experienceLevel < level || level == 0) {
             return;
         }
-
+        if(this.inventory.getStackInSlot(0).getItem() instanceof Infusable == false && this.inventory.getStackInSlot(0).getMetadata() != 0){
+            return;
+        }
         this.level = level;
         this.world.playSound(null, pos.getX(), (double) pos.getY() + 0.5D, pos.getZ(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1F, 1);
         this.inventory.setStackInSlot(1, new ItemStack(Items.AIR));
