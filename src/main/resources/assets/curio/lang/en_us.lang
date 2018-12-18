@@ -76,5 +76,5 @@ curio.BlockWaterCrystal.description=Found on the bottom of large bodies of water
 curio.BlockEarthCrystal.description=Found in foresty area's.
 curio.BlockAirCrystal.description=Found on the highest mountain.
 
-curio.BlockInfusionTable.description=Infuse items with experience! the level is selected by adding lapis after the infusable item to select the level.
+curio.BlockInfusionTable.description=Infuse items with experience! the level is selected by adding lapis after the infusable item to select the level. right click to start the infusion and shift+right click to remove the item.
 curio.BlockPedestal.description=Display any item! If the item is a bauble the pedestal will give the effect of that bauble to the player who placed the block in a area of 25 blocks.

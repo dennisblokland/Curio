@@ -107,7 +107,7 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
         if (player.experienceLevel < level || level == 0) {
             return;
         }
-        if(this.inventory.getStackInSlot(0).getItem() instanceof Infusable == false && this.inventory.getStackInSlot(0).getMetadata() != 0){
+        if(this.inventory.getStackInSlot(0).getItem() instanceof Infusable == false || this.inventory.getStackInSlot(0).getMetadata() != 0){
             return;
         }
         this.level = level;
