@@ -42,4 +42,7 @@ public class CommonProxy {
         return null;
     }
 
+    public String Translate(String s) {
+        return s;
+    }
 }

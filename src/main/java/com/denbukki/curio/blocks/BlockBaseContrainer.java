@@ -51,7 +51,7 @@ public class BlockBaseContrainer extends BlockContainer {
     }
 
     public String getDescriptionText() {
-        return I18n.format(ModInfo.MOD_ID +"." + this.name + ".description");
+        return Curio.proxy.Translate(ModInfo.MOD_ID +"." + this.name + ".description");
     }
 
 }

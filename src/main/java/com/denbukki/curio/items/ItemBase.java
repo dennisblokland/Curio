@@ -17,7 +17,7 @@ public class ItemBase extends Item {
         setCreativeTab(Curio.CURIO_TAB);
         setUnlocalizedName(ModInfo.MOD_ID +"."+this.name);
         setRegistryName(new ResourceLocation(ModInfo.MOD_ID, this.name));
-        if(!(this instanceof ItemCurioBook)){
+        if(!(this instanceof ItemCurioBook) ){
             Curio.bookManager.AddPage(this.getDescriptionText(), new ItemStack(this,1,0));
         }
 
@@ -30,7 +30,8 @@ public class ItemBase extends Item {
 
 
     public String getDescriptionText() {
-        return I18n.format(ModInfo.MOD_ID +"." + this.name + ".description");
+        return Curio.proxy.Translate(ModInfo.MOD_ID +"." + this.name + ".description");
+
     }
 
 

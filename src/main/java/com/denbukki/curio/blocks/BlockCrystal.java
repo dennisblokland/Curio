@@ -153,7 +153,7 @@ public class BlockCrystal extends  BlockHorizontal {
 
     }
     public String getDescriptionText() {
-        return I18n.format(ModInfo.MOD_ID +"." + this.name + ".description");
+        return Curio.proxy.Translate(ModInfo.MOD_ID +"." + this.name + ".description");
     }
 
     public void registerItemModel(Item itemBlock) {

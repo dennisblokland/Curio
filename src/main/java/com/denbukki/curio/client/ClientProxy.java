@@ -10,6 +10,7 @@ import com.denbukki.curio.tiles.TileEntityInfusionTable;
 import com.denbukki.curio.tiles.TileEntityPedestal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.client.model.ModelLoader;
@@ -54,6 +55,9 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void spawnParticle(EnumParticleTypes type, double x, double y, double z, double v, double v1, double v2) {
         Minecraft.getMinecraft().world.spawnParticle(type, z, y, z, v, v1, v2);
+    }
+    public String Translate(String s) {
+        return  I18n.format(s);
     }
 
 }
