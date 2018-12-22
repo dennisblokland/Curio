@@ -51,9 +51,7 @@ public class WorldgenCrystal implements IWorldGenerator {
                 }
             }
             if (newPos != null) {
-                IBlockState state = crystal.getStateFromMeta(random.nextInt(3));
-
-                for (int tries = 0; tries < 4; tries++) {
+                IBlockState state = crystal.getStateFromMeta(5);                for (int tries = 0; tries < 4; tries++) {
                     BlockPos blockpos = newPos.add(random.nextInt(8) - random.nextInt(8), random.nextInt(8) - random.nextInt(8), random.nextInt(8) - random.nextInt(8));
                     final BlockPos underpos = blockpos.down();
 
@@ -75,8 +73,7 @@ public class WorldgenCrystal implements IWorldGenerator {
             final int posZ = zPos + random.nextInt(16);
             final BlockPos newPos = new BlockPos(posX, posY, posZ);
             if (newPos != null) {
-                IBlockState state = crystal.getStateFromMeta(random.nextInt(3));
-
+                IBlockState state = crystal.getStateFromMeta(5);
                 for (int tries = 0; tries < 8; tries++) {
                     BlockPos blockpos = newPos.add(random.nextInt(8) - random.nextInt(8), random.nextInt(8) - random.nextInt(8), random.nextInt(8) - random.nextInt(8));
                     final BlockPos underpos = blockpos.down();
@@ -97,8 +94,7 @@ public class WorldgenCrystal implements IWorldGenerator {
             final int posZ = zPos + random.nextInt(16);
             final BlockPos newPos = new BlockPos(posX, posY, posZ);
             if (newPos != null) {
-                IBlockState state = crystal.getStateFromMeta(random.nextInt(3));
-
+                IBlockState state = crystal.getStateFromMeta(5);
                 for (int tries = 0; tries < 4; tries++) {
                     BlockPos blockpos = newPos.add(random.nextInt(8) - random.nextInt(8), random.nextInt(8) - random.nextInt(8), random.nextInt(8) - random.nextInt(8));
                     final BlockPos underpos = blockpos.down();

@@ -5,9 +5,13 @@
   },
   "variants": {
     "inventory": { "model": "curio:firecrystal.obj" , "transform": "forge:default-block"},
-    "facing=north": { "model": "curio:firecrystal.obj" },
-    "facing=south": { "model": "curio:firecrystal.obj", "y": 180 },
-    "facing=west":  { "model": "curio:firecrystal.obj", "y": 270 },
-    "facing=east":  { "model": "curio:firecrystal.obj", "y": 90 }
+    "facing=down_z": { "model": "curio:firecrystal.obj", "x": 180, "y": 180 },
+    "facing=down_x": { "model": "curio:firecrystal.obj", "x": 180, "y": 90 },
+    "facing=up_z": { "model": "curio:firecrystal.obj" },
+    "facing=up_x": { "model": "curio:firecrystal.obj", "y": 270 },
+    "facing=east": { "model": "curio:firecrystal.obj", "x": 90, "y": 90 },
+    "facing=west": { "model": "curio:firecrystal.obj", "x": 90, "y": 270 },
+    "facing=south" : { "model": "curio:firecrystal.obj", "x": 90, "y": 180 },
+    "facing=north" : { "model": "curio:firecrystal.obj", "x": 90 }
     }
 }
