@@ -21,6 +21,7 @@ public class CurioItems {
     public static final Item itemBeltWaterWalking = new ItemBeltWaterWalking();
     public static final Item itemFallingBelt= new ItemFallingBelt();
     public static final Item itemSpeedBelt= new ItemSpeedBelt();
+    public static final Item ItemWallClimbBelt= new ItemWallClimbBelt();
 
     public static final Item itemRingOfFlight= new ItemRingOfFlight();
     public static final Item ItemRingMagnet = new ItemRingMagnet();
@@ -60,7 +61,8 @@ public class CurioItems {
                 itemEarthShard,
                 itemWaterShard,
                 itemFireShard,
-                ItemCurioBook
+                ItemCurioBook,
+                ItemWallClimbBelt
         );
 
 
@@ -89,6 +91,7 @@ public class CurioItems {
         ((BaublesItemBase)itemBeltWaterWalking).registerItemModel();
         ((BaublesItemBase)itemFallingBelt).registerItemModel();
         ((BaublesItemBase)itemSpeedBelt).registerItemModel();
+        ((BaublesItemBase)ItemWallClimbBelt).registerItemModel();
         ((BaublesItemBase)itemRingOfFlight).registerItemModel();
         ((BaublesItemBase)ItemRingMagnet).registerItemModel();
 

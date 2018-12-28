@@ -22,8 +22,9 @@ item.curio.ItemRingOfFlight.name=Ring of Flight
 item.curio.ItemRingMagnet.name=Magnet Ring
 
 item.curio.ItemSpeedBelt.name=Speed Belt
-
+item.curio.ItemWallClimbBelt.name=Wall climbing Belt
 item.curio.ItemFallingBelt.name=Falling Belt
+
 item.curio.ItemGrowthPendant.name=Growth Pendant
 item.curio.ItemAmuletNightvision.name=Amulet of Nightvision
 item.curio.ItemAmuletFieryCore.name=Amulet of the Fiery Core
