@@ -11,4 +11,4 @@ install:
  - ./gradlew setupCIWorkspace -S
 script:
  - ./gradlew build -S
- - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner'
+ - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
