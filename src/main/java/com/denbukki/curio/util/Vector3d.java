@@ -1,7 +1,31 @@
 package com.denbukki.curio.util;
 
 public class Vector3d {
-    public double x, y, z;
+    private double x, y, z;
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public void setZ(double z) {
+        this.z = z;
+    }
+
+    public double getZ() {
+        return z;
+    }
 
     public Vector3d(double x, double y, double z) {
         this.x = x;

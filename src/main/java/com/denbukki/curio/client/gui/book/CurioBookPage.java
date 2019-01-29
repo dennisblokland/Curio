@@ -4,21 +4,23 @@ import net.minecraft.item.ItemStack;
 
 public class CurioBookPage {
 
-    private String DescriptionText;
-    public CurioBookPage(String DescriptionText, ItemStack stack){
-        this.DescriptionText = DescriptionText;
-        this.ItemStack = stack;
+    private String descriptionText;
+    private ItemStack itemStack;
+
+    public CurioBookPage(String descriptionText, ItemStack stack){
+        this.descriptionText = descriptionText;
+        this.itemStack = stack;
     }
 
     public String getDescriptionText() {
-        return DescriptionText;
+        return descriptionText;
     }
 
     public ItemStack getItemStack() {
-        return ItemStack;
+        return itemStack;
     }
 
-    private ItemStack ItemStack;
+
 
 
 }

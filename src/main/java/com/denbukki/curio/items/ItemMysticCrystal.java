@@ -25,7 +25,7 @@ public class ItemMysticCrystal extends ItemBase implements Infusable{
 
 
     }
-    public static final int[] Levels = new int[] {0, 5, 10, 15, 20, 25, 30, 35, 50, 100};
+    private static final int[] Levels = new int[] {0, 5, 10, 15, 20, 25, 30, 35, 50, 100};
 
     @SideOnly(Side.CLIENT)
     @Override

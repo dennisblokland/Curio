@@ -28,10 +28,11 @@ public class TileEntityPedestal extends TileEntity implements ITickable {
 
     private static final int RANGE = 25;
     private UUID playerUUID;
-    public EntityItem itemEntity = null;
-    public ItemStack cachedBauble = null;
-    public boolean isActive = false;
-    public WeakReference<EntityPlayer> cachedPlayer = new WeakReference<>(null);
+
+    private ItemStack cachedBauble = null;
+    private boolean isActive = false;
+    private WeakReference<EntityPlayer> cachedPlayer = new WeakReference<>(null);
+
     public ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {

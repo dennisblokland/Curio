@@ -4,7 +4,6 @@ import com.denbukki.curio.Curio;
 import com.denbukki.curio.ModInfo;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -34,7 +33,7 @@ public class BlockBaseContrainer extends BlockContainer {
 
     public Item createItemBlock() {
         Item item = new ItemBlock(this).setRegistryName(getRegistryName());
-        Curio.bookManager.AddPage(this.getDescriptionText(), new ItemStack(item,1,0));
+        Curio.bookManager.addPage(this.getDescriptionText(), new ItemStack(item,1,0));
 
         return item;
     }
@@ -51,7 +50,7 @@ public class BlockBaseContrainer extends BlockContainer {
     }
 
     public String getDescriptionText() {
-        return Curio.proxy.Translate(ModInfo.MOD_ID +"." + this.name + ".description");
+        return Curio.proxy.translate(ModInfo.MOD_ID +"." + this.name + ".description");
     }
 
 }

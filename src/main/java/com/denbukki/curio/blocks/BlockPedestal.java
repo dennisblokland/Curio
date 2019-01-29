@@ -5,7 +5,6 @@ import com.denbukki.curio.client.gui.CurioGuiHandler;
 import com.denbukki.curio.tiles.TileEntityPedestal;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -28,7 +27,6 @@ import javax.annotation.Nullable;
 
 public class BlockPedestal extends  BlockBaseContrainer {
 
-    private EntityPlayer player;
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
     public BlockPedestal() {
@@ -110,10 +108,9 @@ public class BlockPedestal extends  BlockBaseContrainer {
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if (!world.isRemote) {
-            if (!player.isSneaking()) {
-                player.openGui(Curio.instance, CurioGuiHandler.PEDESTAL, world, pos.getX(), pos.getY(), pos.getZ());
-            }
+        if (!world.isRemote && !player.isSneaking()) {
+            player.openGui(Curio.instance, CurioGuiHandler.PEDESTAL, world, pos.getX(), pos.getY(), pos.getZ());
+
         }
         return true;
 
@@ -128,7 +125,7 @@ public class BlockPedestal extends  BlockBaseContrainer {
     {
         worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
         if(placer instanceof EntityPlayer){
-            player = (EntityPlayer) placer;
+            EntityPlayer player = (EntityPlayer) placer;
             TileEntityPedestal tile = (TileEntityPedestal)worldIn.getTileEntity(pos);
             tile.setPlayerUUID(player);
 

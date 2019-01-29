@@ -1,19 +1,14 @@
 package com.denbukki.curio.client.gui.book;
 
 import com.denbukki.curio.Curio;
-import com.denbukki.curio.items.CurioItems;
-import com.denbukki.curio.items.ItemBase;
 import com.google.common.collect.Ordering;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import org.lwjgl.input.Keyboard;
-
-import java.util.Arrays;
 import java.util.List;
 
 public class GuiCurioBook  extends GuiScreen {
@@ -61,6 +56,8 @@ public class GuiCurioBook  extends GuiScreen {
                 break;
             case BUTTON_PREV:
                 --pageIndex;
+                break;
+            default:
                 break;
         }
         updateButtonState();

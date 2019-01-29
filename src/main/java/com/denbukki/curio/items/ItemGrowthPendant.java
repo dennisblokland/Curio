@@ -35,7 +35,7 @@ public class ItemGrowthPendant extends BaublesItemBase {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        if (!(stack.getTagCompound() == null)) {
+        if (stack.getTagCompound() != null) {
             if (stack.getTagCompound().getBoolean("isActive")) {
                 tooltip.add("Activated");
             } else {
@@ -101,13 +101,11 @@ public class ItemGrowthPendant extends BaublesItemBase {
 
 
         }
-        if (amulet != null && amulet.getItem() == this) if (world.rand.nextInt(40) == 0) {
+        if (amulet != null && amulet.getItem() == this && world.rand.nextInt(40) == 0) {
 
             stack.damageItem(1, entity);
-            if (stack.getItemDamage() == 1001)
-
-                // baubles.setInventorySlotContents(0, null);
-                if (amulet.getItem() == null) player.playSound(SoundEvents.ENTITY_ITEM_BREAK, .75F, 2f);
+            if (stack.getItemDamage() == 1001 && amulet.getItem() == null)
+                player.playSound(SoundEvents.ENTITY_ITEM_BREAK, .75F, 2f);
         }
 
 

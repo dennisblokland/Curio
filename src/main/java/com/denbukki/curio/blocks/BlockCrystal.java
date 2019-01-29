@@ -2,8 +2,6 @@ package com.denbukki.curio.blocks;
 
 import com.denbukki.curio.Curio;
 import com.denbukki.curio.ModInfo;
-import net.minecraft.block.BlockLever;
-import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -113,13 +111,13 @@ public class BlockCrystal extends BlockRotatedPillar {
 
     public Item createItemBlock() {
         Item item = new ItemBlock(this).setRegistryName(getRegistryName());
-        Curio.bookManager.AddPage(this.getDescriptionText(), new ItemStack(item,1,0));
+        Curio.bookManager.addPage(this.getDescriptionText(), new ItemStack(item,1,0));
 
         return item;
 
     }
     public String getDescriptionText() {
-        return Curio.proxy.Translate(ModInfo.MOD_ID +"." + this.name + ".description");
+        return Curio.proxy.translate(ModInfo.MOD_ID +"." + this.name + ".description");
     }
 
     public void registerItemModel(Item itemBlock) {
@@ -129,9 +127,6 @@ public class BlockCrystal extends BlockRotatedPillar {
     {
         switch ((BlockCrystal.EnumOrientation)state.getValue(FACING))
         {
-            case EAST:
-            default:
-                return CRYSTAL_EAST_AABB;
             case WEST:
                 return CRYSTAL_WEST_AABB;
             case SOUTH:
@@ -144,6 +139,9 @@ public class BlockCrystal extends BlockRotatedPillar {
             case DOWN_X:
             case DOWN_Z:
                 return CRYSTAL_DOWN_AABB;
+            case EAST:
+            default:
+                return CRYSTAL_EAST_AABB;
         }
     }
     protected BlockStateContainer createBlockState()
@@ -198,6 +196,8 @@ public class BlockCrystal extends BlockRotatedPillar {
                         return state.withProperty(FACING, BlockCrystal.EnumOrientation.DOWN_Z);
                     case DOWN_Z:
                         return state.withProperty(FACING, BlockCrystal.EnumOrientation.DOWN_X);
+                    default:
+                        return state;
                 }
 
             case CLOCKWISE_90:
@@ -220,6 +220,8 @@ public class BlockCrystal extends BlockRotatedPillar {
                         return state.withProperty(FACING, BlockCrystal.EnumOrientation.DOWN_Z);
                     case DOWN_Z:
                         return state.withProperty(FACING, BlockCrystal.EnumOrientation.DOWN_X);
+                    default:
+                        return state;
                 }
 
             default:
@@ -256,7 +258,7 @@ public class BlockCrystal extends BlockRotatedPillar {
 
         return iblockstate.withProperty(FACING, BlockCrystal.EnumOrientation.forFacings(facing, placer.getHorizontalFacing()));
     }
-    public static enum EnumOrientation implements IStringSerializable
+    public enum EnumOrientation implements IStringSerializable
     {
         DOWN_X(0, "down_x", EnumFacing.DOWN),
         EAST(1, "east", EnumFacing.EAST),
@@ -278,7 +280,6 @@ public class BlockCrystal extends BlockRotatedPillar {
             this.name = name;
             this.facing = facing;
         }
-
         public int getMetadata()
         {
             return this.meta;
@@ -289,6 +290,7 @@ public class BlockCrystal extends BlockRotatedPillar {
             return this.facing;
         }
 
+        @Override
         public String toString()
         {
             return this.name;

@@ -4,13 +4,10 @@ import com.denbukki.curio.tiles.TileEntityInfusionTable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
@@ -23,17 +20,17 @@ public class TileEntityInfusionTableRenderer extends TileEntitySpecialRenderer<T
     {
         World world = this.getWorld();
         TileEntityInfusionTable tile = (TileEntityInfusionTable)world.getTileEntity(te.getPos());
-        int items = tile.inventory.getStackInSlot(1).getCount();
+        int items = tile.getInventory().getStackInSlot(1).getCount();
         float[] angles = new float[9];
         float anglePer = 360F / items;
         float totalAngle = 0F;
         for(int i = 0; i < angles.length; i++)
             angles[i] = totalAngle += anglePer;
 
-        ItemStack stack = tile.inventory.getStackInSlot(0);
-        ItemStack stack2 = tile.inventory.getStackInSlot(1);
+        ItemStack stack = tile.getInventory().getStackInSlot(0);
+        ItemStack stack2 = tile.getInventory().getStackInSlot(1);
         float time = te.getWorld().getTotalWorldTime() + partialTicks;
-        for(int i = 0; i < tile.inventory.getStackInSlot(1).getCount(); i++) {
+        for(int i = 0; i < tile.getInventory().getStackInSlot(1).getCount(); i++) {
             GlStateManager.enableRescaleNormal();
             GlStateManager.alphaFunc(GL11.GL_GREATER, 0.1f);
             GlStateManager.enableBlend();

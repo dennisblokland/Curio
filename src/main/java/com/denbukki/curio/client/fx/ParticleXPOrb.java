@@ -73,7 +73,7 @@ public class ParticleXPOrb extends Particle {
     }
 
     @Override
-    public int getBrightnessForRender(float p_189214_1_) {
+    public int getBrightnessForRender(float brightness) {
         return 15728880;
     }
 

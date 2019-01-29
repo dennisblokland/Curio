@@ -1,13 +1,11 @@
 package com.denbukki.curio.blocks;
 
 import com.denbukki.curio.items.Infusable;
-import com.denbukki.curio.items.ItemMysticCrystal;
 import com.denbukki.curio.tiles.TileEntityInfusionTable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -22,7 +20,6 @@ import net.minecraftforge.items.IItemHandler;
 import javax.annotation.Nullable;
 
 public class BlockInfusionTable extends BlockBaseContrainer {
-    private boolean isWorking;
 
     public BlockInfusionTable() {
         super(Material.ROCK, "BlockInfusionTable");
@@ -53,10 +50,10 @@ public class BlockInfusionTable extends BlockBaseContrainer {
             ItemStack heldItem = player.getHeldItem(hand);
             TileEntityInfusionTable tile = (TileEntityInfusionTable) world.getTileEntity(pos);
             IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side);
-            ItemStack tileItem = tile.inventory.getStackInSlot(0);
+            ItemStack tileItem = tile.getInventory().getStackInSlot(0);
                 if (!player.isSneaking()) {
                     if (heldItem.getItem() instanceof Infusable && heldItem.getItemDamage() == 0) {
-                        if (tile.inventory.getStackInSlot(0).isEmpty()) {
+                        if (tile.getInventory().getStackInSlot(0).isEmpty()) {
                             itemHandler.insertItem(0, new ItemStack(heldItem.getItem(), 1, 0), false);
 
                             heldItem.setCount(heldItem.getCount() - 1);
@@ -65,23 +62,22 @@ public class BlockInfusionTable extends BlockBaseContrainer {
                     }
                     else if(!tileItem.isEmpty() &&heldItem.getItem() instanceof ItemDye && heldItem.getItemDamage() == 4){
                         Infusable infusable = (Infusable)tileItem.getItem();
-                        if (tile.inventory.getStackInSlot(1).getCount() < infusable.getLevels().length - 2) {
+                        if (tile.getInventory().getStackInSlot(1).getCount() < infusable.getLevels().length - 2) {
                             itemHandler.insertItem(1, new ItemStack(heldItem.getItem(), 1, heldItem.getMetadata()), false);
                             heldItem.setCount(heldItem.getCount() - 1);
                             tile.markDirty();
                         }
                     } else if(heldItem.isEmpty()){
-                        tile.infuseItem(player, ((Infusable) tile.inventory.getStackInSlot(0).getItem()).getLevels()[tile.inventory.getStackInSlot(1).getCount() + 1]);
+                        tile.infuseItem(player, ((Infusable) tile.getInventory().getStackInSlot(0).getItem()).getLevels()[tile.getInventory().getStackInSlot(1).getCount() + 1]);
                     }
 
-            } else if (player.isSneaking()) {
-                if(!tile.isWorking()){
-                    if(!tile.inventory.getStackInSlot(1).isEmpty()){
+            } else if (player.isSneaking() && !tile.isWorking()) {
+                    if(!tile.getInventory().getStackInSlot(1).isEmpty()){
                         player.inventory.addItemStackToInventory(itemHandler.extractItem(1, 1, false));
                     }else{
                         player.inventory.addItemStackToInventory(itemHandler.extractItem(0, 64, false));
                     }
-                }
+
             }
         }
         return true;

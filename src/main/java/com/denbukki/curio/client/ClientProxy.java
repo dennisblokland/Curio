@@ -1,11 +1,8 @@
 package com.denbukki.curio.client;
 
 import com.denbukki.curio.CommonProxy;
-import com.denbukki.curio.Curio;
 import com.denbukki.curio.ModInfo;
 import com.denbukki.curio.client.fx.ParticleXPOrb;
-import com.denbukki.curio.client.gui.CurioGuiHandler;
-import com.denbukki.curio.client.gui.book.GuiCurioBook;
 import com.denbukki.curio.tiles.TileEntityInfusionTable;
 import com.denbukki.curio.tiles.TileEntityPedestal;
 import net.minecraft.client.Minecraft;
@@ -17,9 +14,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy {
     @Override
@@ -45,7 +40,7 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public void OrbFX(double x, double y, double z, double mX, double mY, double mZ, int age, boolean orbit) {
+    public void orbFX(double x, double y, double z, double mX, double mY, double mZ, int age, boolean orbit) {
 
         ParticleXPOrb particle = new ParticleXPOrb(Minecraft.getMinecraft().world, x, y, z, mX, mY, mZ, orbit);
         particle.setMaxAge(age);
@@ -56,7 +51,7 @@ public class ClientProxy extends CommonProxy {
     public void spawnParticle(EnumParticleTypes type, double x, double y, double z, double v, double v1, double v2) {
         Minecraft.getMinecraft().world.spawnParticle(type, z, y, z, v, v1, v2);
     }
-    public String Translate(String s) {
+    public String translate(String s) {
         return  I18n.format(s);
     }
 

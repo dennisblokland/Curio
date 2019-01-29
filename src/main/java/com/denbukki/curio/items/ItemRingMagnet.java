@@ -61,9 +61,9 @@ public class ItemRingMagnet extends BaublesItemBase {
             motionVector.normalise();
         }
 
-        entity.motionX = motionVector.x * speed;
-        entity.motionY = motionVector.y * speed;
-        entity.motionZ = motionVector.z * speed;
+        entity.motionX = motionVector.getX() * speed;
+        entity.motionY = motionVector.getY() * speed;
+        entity.motionZ = motionVector.getZ() * speed;
     }
 
 

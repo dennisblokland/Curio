@@ -14,7 +14,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -61,8 +60,8 @@ public class ItemDeflectionTiara extends BaublesItemBase implements Infusable, I
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
         double range = 1.5;
-        double Yrange = 1.0;
-        AxisAlignedBB bounds = new AxisAlignedBB(player.getEntityBoundingBox().minX - range, player.getEntityBoundingBox().minY - Yrange, player.getEntityBoundingBox().minZ - range, player.getEntityBoundingBox().maxX + range, player.getEntityBoundingBox().maxY + Yrange, player.getEntityBoundingBox().maxZ + range);
+        double yRange = 1.0;
+        AxisAlignedBB bounds = new AxisAlignedBB(player.getEntityBoundingBox().minX - range, player.getEntityBoundingBox().minY - yRange, player.getEntityBoundingBox().minZ - range, player.getEntityBoundingBox().maxX + range, player.getEntityBoundingBox().maxY + yRange, player.getEntityBoundingBox().maxZ + range);
         List<Entity> deflectables = player.world.getEntitiesWithinAABB(EntityArrow.class, bounds);
         deflectables.addAll(player.world.getEntitiesWithinAABB(EntityThrowable.class, bounds));
         deflectables.addAll(player.world.getEntitiesWithinAABB(EntityFireball.class, bounds));

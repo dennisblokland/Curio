@@ -20,7 +20,8 @@ public class ItemAmuletFieryCore  extends BaublesItemBase {
         super("ItemAmuletFieryCore");
         setMaxDamage(2002);
     }
-    public static final String[] IS_IMMUNE_TO_FIRE = new String[] { "isImmuneToFire", "field_70178_ae", "ag" };
+    private static final String[] IS_IMMUNE_TO_FIRE = new String[] { "isImmuneToFire", "field_70178_ae", "ag" };
+
     @Override
     public void onWornTick(ItemStack stack, EntityLivingBase player) {
 
@@ -31,7 +32,6 @@ public class ItemAmuletFieryCore  extends BaublesItemBase {
         Material mlava = world.getBlockState(new BlockPos(x, y, z)).getMaterial();
         EntityPlayer playerEntity = (EntityPlayer) player;
 
-        ItemStack amulet = BaublesApi.getBaublesHandler(playerEntity).getStackInSlot(0);
 
         if(mlava == Material.LAVA){
 

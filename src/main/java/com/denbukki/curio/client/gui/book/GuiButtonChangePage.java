@@ -16,7 +16,7 @@ public class GuiButtonChangePage extends GuiButton {
     public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks){
         if (visible) {
             boolean mouseOver = mouseX >= this.x && mouseY >= y && mouseX < x + width && mouseY < y + height;
-          //  glColor4f(1, 1, 1, 1);
+
             mc.renderEngine.bindTexture(GuiCurioBook.texture);
             int u = 0;
             int v = 192;

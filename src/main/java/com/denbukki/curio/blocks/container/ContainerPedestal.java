@@ -1,4 +1,4 @@
-package com.denbukki.curio.blocks.Container;
+package com.denbukki.curio.blocks.container;
 
 import com.denbukki.curio.tiles.TileEntityPedestal;
 import net.minecraft.entity.player.EntityPlayer;

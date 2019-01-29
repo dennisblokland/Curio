@@ -2,9 +2,7 @@ package com.denbukki.curio.tiles;
 
 import com.denbukki.curio.Curio;
 import com.denbukki.curio.blocks.CurioBlocks;
-import com.denbukki.curio.items.CurioItems;
 import com.denbukki.curio.items.Infusable;
-import com.denbukki.curio.items.ItemMysticCrystal;
 import com.denbukki.curio.network.PacketRequestUpdateInfusionTable;
 import com.denbukki.curio.network.PacketUpdateInfusionTable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,11 +29,37 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
 
     private static final int CRAFT_DONE_EVENT = 2;
     private static final int CRAFT_EFFECT_EVENT = 55;
-    public int infuseTime;
-    public int level = 0;
+    private int infuseTime;
+    private int level = 0;
     private int totalInfuseTime = 200;
 
-    public ItemStackHandler inventory = new ItemStackHandler(2) {
+    public void setInfuseTime(int infuseTime) {
+        this.infuseTime = infuseTime;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getInfuseTime() {
+        return infuseTime;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getTotalInfuseTime() {
+        return totalInfuseTime;
+    }
+
+    Random rand = new Random();
+
+    public ItemStackHandler getInventory() {
+        return inventory;
+    }
+
+    private ItemStackHandler inventory = new ItemStackHandler(2) {
         @Override
         protected void onContentsChanged(int slot) {
             if (!world.isRemote) {
@@ -54,7 +78,7 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
     public boolean receiveClientEvent(int id, int param) {
         switch (id) {
             case CRAFT_EFFECT_EVENT: {
-                Random rand = new Random();
+ ;
                 double d0 = (double) pos.getX() + 0.5D + ((double) rand.nextFloat() - 0.5D) * 0.2D;
                 double d1 = (double) ((float) pos.getY() + 0.0625F);
                 double d2 = (double) pos.getZ() + 0.5D + ((double) rand.nextFloat() - 0.5D) * 0.2D;
@@ -62,7 +86,7 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
                     float f1 = 0.025F;
                     float f2 = -0.1f + rand.nextFloat() * (0.1f - -0.1f);
                     float f3 = -0.1f + rand.nextFloat() * (0.1f - -0.1f);
-                    Curio.proxy.OrbFX(d0, d1 + 1.1, d2, (double) f2, (double) f1, (double) f3, 200, true);
+                    Curio.proxy.orbFX(d0, d1 + 1.1, d2, (double) f2, (double) f1, (double) f3, 200, true);
                 }
                 return true;
             }
@@ -89,7 +113,7 @@ public class TileEntityInfusionTable extends TileEntity implements ITickable {
             }
             Double motionX = Math.cos(yaw / 180.0 * Math.PI);
             Double MotionZ = Math.sin(yaw / 180.0 * Math.PI);
-            Curio.proxy.OrbFX(x, y, z, motionX, (double) 0, MotionZ, 25, false);
+            Curio.proxy.orbFX(x, y, z, motionX, (double) 0, MotionZ, 25, false);
 
             this.world.playSound(null, pos.getX(), (double) pos.getY() + 0.5D, pos.getZ(), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 1F, 1);
 

@@ -1,8 +1,5 @@
 package com.denbukki.curio;
 
-import com.denbukki.curio.client.fx.ParticleXPOrb;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumParticleTypes;
@@ -23,7 +20,7 @@ public class CommonProxy {
         registerRenderers();
     }
 
-    public void OrbFX(double x, double y, double z, double mX, double mY, double mZ, int age, boolean orbit) {
+    public void orbFX(double x, double y, double z, double mX, double mY, double mZ, int age, boolean orbit) {
 
     }
 
@@ -42,7 +39,7 @@ public class CommonProxy {
         return null;
     }
 
-    public String Translate(String s) {
+    public String translate(String s) {
         return s;
     }
 }

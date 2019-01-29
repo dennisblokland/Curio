@@ -22,7 +22,7 @@ public class PacketUpdateInfusionTable implements IMessage {
         this.infuseTime = infuseTime;
     }
     public PacketUpdateInfusionTable(TileEntityInfusionTable te) {
-        this(te.getPos(), te.inventory.getStackInSlot(0), te.inventory.getStackInSlot(1), te.level ,te.infuseTime);
+        this(te.getPos(), te.getInventory().getStackInSlot(0), te.getInventory().getStackInSlot(1), te.getLevel() ,te.getInfuseTime());
     }
 
     private BlockPos pos;
@@ -60,10 +60,10 @@ public class PacketUpdateInfusionTable implements IMessage {
         public IMessage onMessage(PacketUpdateInfusionTable message, MessageContext ctx) {
             Minecraft.getMinecraft().addScheduledTask(() -> {
                 TileEntityInfusionTable te = (TileEntityInfusionTable)Minecraft.getMinecraft().world.getTileEntity(message.pos);
-                te.inventory.setStackInSlot(0, message.stack);
-                te.inventory.setStackInSlot(1, message.stack2);
-                te.level = message.level;
-                te.infuseTime = message.infuseTime;
+                te.getInventory().setStackInSlot(0, message.stack);
+                te.getInventory().setStackInSlot(1, message.stack2);
+                te.setLevel(message.level);
+                te.setLevel(message.infuseTime);
             });
             return null;
         }

@@ -5,7 +5,6 @@ import com.denbukki.curio.ModInfo;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.client.resources.I18n;
 
 public class ItemBase extends Item {
 
@@ -18,7 +17,7 @@ public class ItemBase extends Item {
         setUnlocalizedName(ModInfo.MOD_ID +"."+this.name);
         setRegistryName(new ResourceLocation(ModInfo.MOD_ID, this.name));
         if(!(this instanceof ItemCurioBook) ){
-            Curio.bookManager.AddPage(this.getDescriptionText(), new ItemStack(this,1,0));
+            Curio.bookManager.addPage(this.getDescriptionText(), new ItemStack(this,1,0));
         }
 
     }
@@ -30,7 +29,7 @@ public class ItemBase extends Item {
 
 
     public String getDescriptionText() {
-        return Curio.proxy.Translate(ModInfo.MOD_ID +"." + this.name + ".description");
+        return Curio.proxy.translate(ModInfo.MOD_ID +"." + this.name + ".description");
 
     }
 
