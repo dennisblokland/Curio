@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class ItemDeflectionTiara extends BaublesItemBase implements Infusable, IRenderBauble {
+public class ItemDeflectionTiara extends ItemTiara implements Infusable, IRenderBauble {
 
     Random random;
     public ItemDeflectionTiara() {
@@ -89,15 +89,4 @@ public class ItemDeflectionTiara extends BaublesItemBase implements Infusable, I
         }
     }
 
-    @Override
-    public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
-        if(type != RenderType.HEAD)
-            return;
-        IRenderBauble.Helper.rotateIfSneaking(player);
-        GlStateManager.translate(0.3D, -0.5D, 0);
-        GlStateManager.rotate(180F,-0.0F, 0F, 1F);
-        GlStateManager.rotate(90,-0.0F, 1F, 0F);
-        GlStateManager.scale(0.5, 0.5, 0.5);
-        Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.NONE);
-    }
 }

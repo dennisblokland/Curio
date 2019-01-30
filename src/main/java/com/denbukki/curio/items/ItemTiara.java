@@ -13,6 +13,10 @@ public class ItemTiara extends BaublesItemBase implements  IRenderBauble {
         super("ItemTiara");
     }
 
+    public ItemTiara(String name) {
+        super(name);
+    }
+
     @Override
     public BaubleType getBaubleType(ItemStack arg0) {
         return BaubleType.HEAD;
@@ -20,13 +24,12 @@ public class ItemTiara extends BaublesItemBase implements  IRenderBauble {
 
     @Override
     public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, IRenderBauble.RenderType type, float partialTicks) {
-        if(type != IRenderBauble.RenderType.HEAD)
+        if(type != RenderType.HEAD)
             return;
-        IRenderBauble.Helper.rotateIfSneaking(player);
-        GlStateManager.translate(0.3D, -0.5D, 0);
-        GlStateManager.rotate(180F,-0.0F, 0F, 1F);
-        GlStateManager.rotate(90,-0.0F, 1F, 0F);
-        GlStateManager.scale(0.5, 0.5, 0.5);
+        IRenderBauble.Helper.translateToHeadLevel(player);
+        IRenderBauble.Helper.translateToFace();
+        IRenderBauble.Helper.defaultTransforms();
+        GlStateManager.translate(0, 0.45D, 0);
         Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.NONE);
     }
 }
