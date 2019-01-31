@@ -33,7 +33,11 @@ public class TileEntityPedestal extends TileEntity implements ITickable {
     private boolean isActive = false;
     private WeakReference<EntityPlayer> cachedPlayer = new WeakReference<>(null);
 
-    public ItemStackHandler inventory = new ItemStackHandler(1) {
+    public ItemStackHandler getInventory() {
+        return inventory;
+    }
+
+    private ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
             if (!world.isRemote) {

@@ -23,7 +23,7 @@ public class PacketUpdatePedestal implements IMessage {
         this.stack = stack;
     }
     public PacketUpdatePedestal(TileEntityPedestal te) {
-        this(te.getPos(), te.inventory.getStackInSlot(0));
+        this(te.getPos(), te.getInventory().getStackInSlot(0));
     }
 
 
@@ -51,7 +51,7 @@ public class PacketUpdatePedestal implements IMessage {
         public IMessage onMessage(PacketUpdatePedestal message, MessageContext ctx) {
             Minecraft.getMinecraft().addScheduledTask(() -> {
                 TileEntityPedestal te = (TileEntityPedestal)Minecraft.getMinecraft().world.getTileEntity(message.pos);
-                te.inventory.setStackInSlot(0, message.stack);
+                te.getInventory().setStackInSlot(0, message.stack);
             });
             return null;
         }

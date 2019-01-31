@@ -23,7 +23,7 @@ public class TileEntityPedestalRenderer extends TileEntitySpecialRenderer<TileEn
     public void render(TileEntityPedestal te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         World world = this.getWorld();
         TileEntityPedestal tile = (TileEntityPedestal) world.getTileEntity(te.getPos());
-        ItemStack stack = tile.inventory.getStackInSlot(0);
+        ItemStack stack = tile.getInventory().getStackInSlot(0);
         if (!stack.isEmpty()) {
             GlStateManager.enableRescaleNormal();
             GlStateManager.alphaFunc(GL11.GL_GREATER, 0.1f);
