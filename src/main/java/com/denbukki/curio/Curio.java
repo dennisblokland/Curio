@@ -4,10 +4,7 @@ package com.denbukki.curio;
 import com.denbukki.curio.blocks.CurioBlocks;
 import com.denbukki.curio.client.gui.CurioGuiHandler;
 import com.denbukki.curio.items.CurioItems;
-import com.denbukki.curio.network.PacketRequestUpdateInfusionTable;
-import com.denbukki.curio.network.PacketRequestUpdatePedestal;
-import com.denbukki.curio.network.PacketUpdateInfusionTable;
-import com.denbukki.curio.network.PacketUpdatePedestal;
+import com.denbukki.curio.network.*;
 import com.denbukki.curio.tiles.TileEntityInfusionTable;
 import com.denbukki.curio.tiles.TileEntityPedestal;
 import com.denbukki.curio.world.CurioWorldGeneration;
@@ -20,6 +17,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -48,10 +46,17 @@ public class Curio {
         network.registerMessage(new PacketRequestUpdateInfusionTable.Handler(), PacketRequestUpdateInfusionTable.class, 1, Side.SERVER);
         network.registerMessage(new PacketUpdatePedestal.Handler(), PacketUpdatePedestal.class, 2,Side.CLIENT);
         network.registerMessage(new PacketRequestUpdatePedestal.Handler(), PacketRequestUpdatePedestal.class, 3, Side.SERVER);
+        network.registerMessage(new PacketRequestUpdatePedestal.Handler(), PacketRequestUpdatePedestal.class, 3, Side.SERVER);
+        network.registerMessage(MessageKeyBind.class, MessageKeyBind.class, 4, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new CurioGuiHandler());
         proxy.preInit(event);
     }
+    @Mod.EventHandler
+    public static void init(FMLInitializationEvent evt) {
+        proxy.registerHandlers();
+        proxy.initKeys();
 
+    }
     @Mod.EventBusSubscriber
     public static class RegsitrationHandler {
 

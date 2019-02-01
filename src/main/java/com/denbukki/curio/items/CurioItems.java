@@ -52,6 +52,7 @@ public class CurioItems {
                 itemBeltWaterWalking,
                 itemFallingBelt,
                 itemSpeedBelt,
+                ItemWallClimbBelt,
                 itemRingOfFlight,
                 ItemRingMagnet,
                 ItemDeflectionTiara,
@@ -61,8 +62,7 @@ public class CurioItems {
                 itemEarthShard,
                 itemWaterShard,
                 itemFireShard,
-                ItemCurioBook,
-                ItemWallClimbBelt
+                ItemCurioBook
         );
 
 

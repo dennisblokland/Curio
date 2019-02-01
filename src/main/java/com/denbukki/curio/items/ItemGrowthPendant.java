@@ -15,7 +15,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
@@ -86,27 +91,22 @@ public class ItemGrowthPendant extends BaublesItemBase {
 
                             if (cropBlock instanceof IPlantable || cropBlock instanceof IGrowable) {
 
-                                //it schedules the next tick.
                                 world.scheduleBlockUpdate(new BlockPos(x, y, z), cropBlock, (int) (distanceCoefficient * (float) 1 * 20F), 1);
                                 cropBlock.updateTick(world, new BlockPos(x, y, z), cropState, world.rand);
-                                if (world.rand.nextInt(350) == 1) {
-                                    stack.damageItem(1, entity);
-                                }
-
                             }
                         }
                     }
                 }
             }
 
+            if (amulet != null && amulet.getItem() == this && world.rand.nextInt(40) == 0) {
 
+                stack.damageItem(1, entity);
+                if (stack.getItemDamage() == 1001 && amulet.getItem() == null)
+                    player.playSound(SoundEvents.ENTITY_ITEM_BREAK, .75F, 2f);
+            }
         }
-        if (amulet != null && amulet.getItem() == this && world.rand.nextInt(40) == 0) {
 
-            stack.damageItem(1, entity);
-            if (stack.getItemDamage() == 1001 && amulet.getItem() == null)
-                player.playSound(SoundEvents.ENTITY_ITEM_BREAK, .75F, 2f);
-        }
 
 
     }
@@ -118,6 +118,12 @@ public class ItemGrowthPendant extends BaublesItemBase {
         }
 
         ItemStack stack = player.getHeldItem(hand);
+        toggleState(stack, player);
+
+        return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+    }
+
+    public void toggleState(ItemStack stack, EntityPlayer player) {
         if (stack.getTagCompound() == null) {
             stack.setTagCompound(new NBTTagCompound());
         }
@@ -125,6 +131,5 @@ public class ItemGrowthPendant extends BaublesItemBase {
         NBTTagCompound tag = stack.getTagCompound();
         tag.setBoolean("isActive", !(tag.getBoolean("isActive")));
 
-        return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }
 }

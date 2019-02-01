@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " L ",
+    " B ",
+    "VCV"
+  ],
+  "key": {
+    "B": {
+      "item": "curio:ItemBelt"
+    },
+    "C": {
+      "item": "curio:ItemMysticCrystal",
+      "data": 5
+    },
+    "L": {
+      "item": "minecraft:ladder"
+    },
+    "V": {
+      "item": "minecraft:vine"
+    }
+  },
+  "result": {
+    "item": "curio:ItemWallClimbBelt",
+    "data": 0
+  }
+}

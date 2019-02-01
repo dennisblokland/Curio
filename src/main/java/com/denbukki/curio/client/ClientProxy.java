@@ -3,6 +3,7 @@ package com.denbukki.curio.client;
 import com.denbukki.curio.CommonProxy;
 import com.denbukki.curio.ModInfo;
 import com.denbukki.curio.client.fx.ParticleXPOrb;
+import com.denbukki.curio.client.handler.KeyHandler;
 import com.denbukki.curio.tiles.TileEntityInfusionTable;
 import com.denbukki.curio.tiles.TileEntityPedestal;
 import net.minecraft.client.Minecraft;
@@ -23,7 +24,12 @@ public class ClientProxy extends CommonProxy {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 
     }
+    @Override
+    public void registerHandlers() {
+        super.registerHandlers();
 
+        MinecraftForge.EVENT_BUS.register(KeyHandler.instance);
+    }
 
     @Override
     public void registerRenderers() {
@@ -55,4 +61,8 @@ public class ClientProxy extends CommonProxy {
         return  I18n.format(s);
     }
 
+    @Override
+    public void initKeys() {
+        KeyHandler.addKeys();
+    }
 }
