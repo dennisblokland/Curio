@@ -66,6 +66,11 @@ public class ItemDeflectionTiara extends ItemTiara implements Infusable, IRender
         deflectables.addAll(player.world.getEntitiesWithinAABB(EntityThrowable.class, bounds));
         deflectables.addAll(player.world.getEntitiesWithinAABB(EntityFireball.class, bounds));
         for (Entity deflectable : deflectables) {
+            if(player.world.isRemote) return;
+            if(deflectable instanceof EntityThrowable){
+                EntityThrowable throwable = (EntityThrowable)deflectable;
+                if(throwable.getThrower()!= null && throwable.getThrower().getUniqueID() == player.getUniqueID())return;
+            }
             if (deflectable.motionX != 0 && deflectable.motionY != 0 && deflectable.motionZ != 0) {
                 if(random.nextInt( 1) == 1 || this.getMetadata(itemstack) != 0) {
                     deflectable.motionX = 0;
