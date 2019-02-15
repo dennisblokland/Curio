@@ -61,8 +61,4 @@ public class ClientProxy extends CommonProxy {
         return  I18n.format(s);
     }
 
-    @Override
-    public void initKeys() {
-        KeyHandler.addKeys();
-    }
 }

@@ -54,7 +54,6 @@ public class Curio {
     @Mod.EventHandler
     public static void init(FMLInitializationEvent evt) {
         proxy.registerHandlers();
-        proxy.initKeys();
 
     }
     @Mod.EventBusSubscriber
